@@ -37,10 +37,11 @@ h4 {
     color: #696969;
 }
 
-.diplomes li, .experiences li, .formations li, .langues li, .competences li {
+.diplomes li, .experiences li, .formations li, .langues li, .competences li, .autres li {
     margin-bottom: 10px;
 }
 
-.experiences li ul, .formations li ul, .competences li ul{
+.experiences li ul, .formations li ul, .competences li ul, .autres li ul{
     margin-top : 10px;
 }
+
