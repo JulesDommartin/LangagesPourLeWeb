@@ -14,7 +14,8 @@ body {
     font-family: "Arial";
     text-align: left;
     margin-top: 30px;
-    background-color: #E0FFFF;
+    background-color: #E8FFFF;
+    color : #393939
 }
 
 .nom {
@@ -33,13 +34,13 @@ hr {
 
 h4 {
     text-decoration: underline;
-    color: #B0E0E6;
+    color: #696969;
 }
 
-.diplomes li, .experiences li, .formations li{
+.diplomes li, .experiences li, .formations li, .langues li, .competences li {
     margin-bottom: 10px;
 }
 
-.experiences li ul, .formations li ul {
+.experiences li ul, .formations li ul, .competences li ul{
     margin-top : 10px;
 }
