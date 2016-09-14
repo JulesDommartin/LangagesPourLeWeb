@@ -1,0 +1,45 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 14 sept. 2016, 11:03:52
+    Author     : jimenezp
+*/
+
+body {
+    width : 85%;
+    margin : auto;
+    font-family: "Arial";
+    text-align: left;
+    margin-top: 30px;
+    background-color: #E0FFFF;
+}
+
+.nom {
+}
+
+.diplomes {
+    margin-top: 30px;
+    
+}
+
+hr {
+    color: black;
+    width: 50%;
+    margin-left: 0;
+}
+
+h4 {
+    text-decoration: underline;
+    color: #B0E0E6;
+}
+
+.diplomes li, .experiences li, .formations li{
+    margin-bottom: 10px;
+}
+
+.experiences li ul, .formations li ul {
+    margin-top : 10px;
+}
