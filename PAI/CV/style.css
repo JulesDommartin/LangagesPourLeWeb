@@ -18,6 +18,18 @@ body {
     color : #393939
 }
 
+.photo {
+    position: absolute;
+    right: 20%;
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.photo img {
+    max-width: 200px;
+    max-height: 200px;
+}
+
 .nom {
 }
 
