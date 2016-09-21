@@ -15,7 +15,8 @@ body {
     text-align: left;
     margin-top: 30px;
     background-color: #E8FFFF;
-    color : #393939
+    color : #393939;
+    margin-bottom: 20px;
 }
 
 .nom {
@@ -45,3 +46,21 @@ h4 {
     margin-top : 10px;
 }
 
+.CV .title {
+    color: #5F9EA0;
+}
+
+.table-langues {
+    width: 600px;
+    margin-left: 25px;
+    border : 1px solid black;
+}
+
+.head-line {
+    width: 200px;
+}
+
+.content-line td, .head-line th {
+    text-align: center;
+    border: 1px solid black;
+}
