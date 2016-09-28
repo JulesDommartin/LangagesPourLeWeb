@@ -6,23 +6,25 @@ and open the template in the editor.
 -->
 
 
-<mots>
-    <mot>
+<dic:dico xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xmlns:dic='http://xml.netbeans.org/schema/dico'
+    xsi:schemaLocation='http://xml.netbeans.org/schema/dico file:/home/d/dommartj/Documents/LangagesPourLeWeb/Tux/xsd/dico.xsd'>
+    <dic:mot>
         Rouge
-    </mot>
-    <mot>
+    </dic:mot>
+    <dic:mot>
         Avion
-    </mot>
-    <mot>
+    </dic:mot>
+    <dic:mot>
         Poisson
-    </mot>
-    <mot>
+    </dic:mot>
+    <dic:mot>
         Caresse
-    </mot>
-    <mot>
+    </dic:mot>
+    <dic:mot>
         Linux
-    </mot>
-    <mot>
+    </dic:mot>
+    <dic:mot>
         Clavier
-    </mot>
-</mots>
+    </dic:mot>
+</dic:dico>
