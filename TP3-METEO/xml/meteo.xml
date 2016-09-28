@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<me:meteoVille
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xmlns:me='http://xml.netbeans.org/schema/meteo'
+    xsi:schemaLocation='http://xml.netbeans.org/schema/meteo file:/home/d/dommartj/Documents/LangagesPourLeWeb/TP3-METEO/xsd/meteo.xsd'>
+    <me:ville>
+        Grenoble
+    </me:ville>
+    <me:date>
+        2016-09-28
+    </me:date>
+    <me:temperatureMin>
+        -12.6
+    </me:temperatureMin>
+    <me:temperatureMax>
+        37.3
+    </me:temperatureMax>
+</me:meteoVille>

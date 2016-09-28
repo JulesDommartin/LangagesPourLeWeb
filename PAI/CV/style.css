@@ -26,6 +26,13 @@ body {
     max-height: 200px;
 }
 
+.photo2 img {
+    position: absolute;
+    right: 20%;
+    max-width: 120px;
+    max-height: 120px;
+}
+
 .photo img {
     max-width: 200px;
     max-height: 200px;

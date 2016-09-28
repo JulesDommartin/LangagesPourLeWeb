@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<me2:meteoVille
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xmlns:me2='http://xml.netbeans.org/schema/meteov2'
+    xsi:schemaLocation='http://xml.netbeans.org/schema/meteov2 file:/home/d/dommartj/Documents/LangagesPourLeWeb/TP3-METEO/xsd/meteov2.xsd'>
+    
+    <me2:ville>
+        <me2:nom>NY</me2:nom>
+        <me2:pays>USA</me2:pays>
+    </me2:ville>
+    <me2:date>2001-09-11</me2:date>
+    <me2:temperatureMin>-666.666</me2:temperatureMin>
+    <me2:temperatureMax>666.666</me2:temperatureMax>
+
+</me2:meteoVille>
