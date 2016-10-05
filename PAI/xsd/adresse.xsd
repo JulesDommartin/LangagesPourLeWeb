@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.ujf-grenoble.fr/l3miage/adresse"
+            xmlns="http://www.ujf-grenoble.fr/l3miage/adresse"
+            elementFormDefault="qualified">
+    
+  <xsd:element name="adresse" type="Adresse"/>
+  
+  <xsd:complexType name="Adresse">
+    <xsd:sequence>
+        
+        <xsd:element name="étage" type="xsd:integer" minOccurs="0"/>
+        <xsd:element name="numéro" type="xsd:integer" minOccurs="0"/>
+        <xsd:element name="rue" type="xsd:string"/>
+        <xsd:element name="ville" type="xsd:string"/>
+        <xsd:element name="codePostal" type="xsd:string"/>
+      
+    </xsd:sequence>
+  </xsd:complexType>
+  
+</xsd:schema>

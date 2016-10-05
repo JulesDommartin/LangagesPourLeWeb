@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://polytech.ujf-grenoble.fr/idty"
+            xmlns="http://polytech.ujf-grenoble.fr/idty"
+            elementFormDefault="qualified">
+  
+  <xsd:element name="id" type="Id"/>
+  
+  <xsd:complexType name="Id">
+    <xsd:sequence>
+        
+      <xsd:element name="nom" type="xsd:string"/>
+      <xsd:element name="prenom" type="xsd:string"/>
+      
+    </xsd:sequence>
+  </xsd:complexType>
+  
+</xsd:schema>

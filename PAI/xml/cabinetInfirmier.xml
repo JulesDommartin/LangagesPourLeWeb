@@ -3,201 +3,108 @@
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
-Editors : Pablo & Jules
 -->
 
 
-<cabinet>
-    <nom>
-        Soins à Grenoble
-    </nom>
+<cabinet
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xmlns:adr='http://www.ujf-grenoble.fr/l3miage/adresse'
+    xmlns:pat='http://www.ujf-grenoble.fr/l3miage/patients'
+    xmlns='http://www.ujf-grenoble.fr/l3miage/medical'
+    xmlns:inf='http://www.ujf-grenoble.fr/l3miage/infirmiers'
+    xsi:schemaLocation='http://www.ujf-grenoble.fr/l3miage/adresse ../xsd/adresse.xsd
+   http://www.ujf-grenoble.fr/l3miage/patients ../xsd/patients.xsd
+   http://www.ujf-grenoble.fr/l3miage/medical ../xsd/cabinet.xsd
+   http://www.ujf-grenoble.fr/l3miage/infirmiers ../xsd/infirmiers.xsd'>
+    <nom>Soins à Grenoble</nom>
     <adresse>
-        <numéro>
-            60
-        </numéro>
-        <rue>
-            rue de la Chimie
-        </rue>
-        <codePostal>
-            38041
-        </codePostal>
-        <ville>
-            Grenoble
-        </ville>
+        <adr:numéro>60</adr:numéro>
+        <adr:rue>rue de la Chimie</adr:rue>
+        <adr:ville>Grenoble</adr:ville>
+        <adr:codePostal>38041</adr:codePostal>
     </adresse>
     <infirmiers>
-        <infirmier id="001">
-            <nom>
-                Fréchie
-            </nom>
-            <prénom>
-                Sarah
-            </prénom>
-            <photo>
-                sarah.png
-            </photo>
-        </infirmier>
-        <infirmier id="002">
-            <nom>
-                Stické
-            </nom>
-            <prénom>
-                Sophie
-            </prénom>
-            <photo>
-                sophie.jpg
-            </photo>
-        </infirmier>
-        <infirmier id="003">
-            <nom>
-                Ochon
-            </nom>
-            <prénom>
-                Paul
-            </prénom>
-            <photo>
-                paul.png
-            </photo>
-        </infirmier>
+        <inf:infirmier id="001">
+            <inf:nom>Fréchie</inf:nom>
+            <inf:prénom>Sarah</inf:prénom>
+            <inf:photo>sarah.png</inf:photo>
+        </inf:infirmier>
+        <inf:infirmier id="002">
+            <inf:nom>Stické</inf:nom>
+            <inf:prénom>Sophie</inf:prénom>
+            <inf:photo>sophie.jpg</inf:photo>
+        </inf:infirmier>
+        <inf:infirmier id="003">
+            <inf:nom>Ochon</inf:nom>
+            <inf:prénom>Paul</inf:prénom>
+            <inf:photo>paul.png</inf:photo>
+        </inf:infirmier>  
     </infirmiers>
     <patients>
-        <patient>
-            <!--  Homme, né en oaût 98 en France, 
-               à Marseille (n° 55 en bouches du rhône) 
-               458e naissance
-            -->
-            <nom>
-                Alécole
-            </nom>
-            <prénom>
-                Yvon
-            </prénom>
-            <sexe>
-                M
-            </sexe>
-            <naissance>
-                1998-08-22
-            </naissance>
-            <numéro>
-                198082205545852
-            </numéro>
-            <adresse>
-                <étage>
-                    6
-                </étage>
-                <numéro>
-                    50
-                </numéro>
-                <rue>
-                    Avenue Félix Viallet
-                </rue>
-                <ville>
-                    Grenoble
-                </ville>
-                <codePostal>
-                    38031
-                </codePostal>
-            </adresse>
-            <visite date="2015-12-08" intervenant="001">
-                <acte id="109" />
-            </visite>
-        </patient>
-        <patient>
-            <nom>
-                Orouge
-            </nom>
-            <prénom>
-                Elvire
-            </prénom>
-            <sexe>
-                F
-            </sexe>
-            <naissance>
-                1982-03-08
-            </naissance>
-            <numéro>
-                282036902305218
-            </numéro>
-            <adresse>
-                <rue>
-                    Rond-Point de la Croix de Vie
-                </rue>
-                <ville>
-                    La Tronche
-                </ville>
-                <codePostal>
-                    38700
-                </codePostal>
-            </adresse>
-            <visite date="2015-12-08">
-                <acte id="300" />
-            </visite>
-        </patient>
-        <patient>
-            <nom>
-                Pien
-            </nom>
-            <prénom>
-                Oscare
-            </prénom>
-            <sexe>
-                F
-            </sexe>
-            <naissance>
-                1975-03-25
-            </naissance>
-            <numéro>
-                275037306569202
-            </numéro>
-            <adresse>
-                <rue>
-                    Rue Casimir Brenier
-                </rue>
-                <ville>
-                    Grenoble
-                </ville>
-                <codePostal>
-                    38000
-                </codePostal>
-            </adresse>
-            <visite date="2015-12-08">
-                <acte id="101" />
-                <acte id="105" />
-            </visite>
-        </patient>
-        <patient>
-            <nom>
-                Kapoëtla
-            </nom>
-            <prénom>
-                Xavier
-            </prénom>
-            <sexe>
-                M
-            </sexe>
-            <naissance>
-                2011-08-02
-            </naissance>
-            <numéro>
-                111083306303521
-            </numéro>
-            <adresse>
-                <numéro>
-                    25
-                </numéro>
-                <rue>
-                     Rue des Martyrs
-                </rue>
-                <ville>
-                    Grenoble
-                </ville>
-                <codePostal>
-                    38042
-                </codePostal>
-            </adresse>
-            <visite date="2015-12-08">
-                <acte id="111" />
-            </visite>
-        </patient>
+        <pat:patient>
+            <pat:nom>Alécole</pat:nom>
+            <pat:prénom>Yvon</pat:prénom>
+            <pat:sexe>M</pat:sexe>
+            <pat:naissance>1998-08-22</pat:naissance>
+            <pat:numéro>198082205545852</pat:numéro>
+            <pat:adresse>
+                <adr:étage>6</adr:étage>
+                <adr:numéro>50</adr:numéro>
+                <adr:rue>Avenue Félix Viallet</adr:rue>
+                <adr:ville>Grenoble</adr:ville>
+                <adr:codePostal>38031</adr:codePostal>
+            </pat:adresse>
+            <pat:visite date="2015-12-08" intervenant="001">
+                <pat:acte id="109" />
+            </pat:visite>
+        </pat:patient>
+        <pat:patient>
+            <pat:nom>Orouge</pat:nom>
+            <pat:prénom>Elvire</pat:prénom>
+            <pat:sexe>F</pat:sexe>
+            <pat:naissance>1982-03-08</pat:naissance>
+            <pat:numéro>282036902305218</pat:numéro>
+            <pat:adresse>
+                <adr:rue>Rond-Point de la Croix de Vie</adr:rue>
+                <adr:ville>La Tronche</adr:ville>
+                <adr:codePostal>38700</adr:codePostal>
+            </pat:adresse>
+            <pat:visite date="2015-12-08">
+                <pat:acte id="300" />
+            </pat:visite>
+        </pat:patient>
+        <pat:patient>
+            <pat:nom>Pien</pat:nom>
+            <pat:prénom>Oscare</pat:prénom>
+            <pat:sexe>F</pat:sexe>
+            <pat:naissance>1975-03-25</pat:naissance>
+            <pat:numéro>275037306569202</pat:numéro>
+            <pat:adresse>
+                <adr:rue>Rue Casimir Brenier</adr:rue>
+                <adr:ville>Grenoble</adr:ville>
+                <adr:codePostal>38000</adr:codePostal>
+            </pat:adresse>
+            <pat:visite date="2015-12-08">
+                <pat:acte id="101" />
+                <pat:acte id="105" />
+            </pat:visite>
+        </pat:patient>
+        <pat:patient>
+            <pat:nom>Kapoëtla</pat:nom>
+            <pat:prénom>Xavier</pat:prénom>
+            <pat:sexe>M</pat:sexe>
+            <pat:naissance>2011-08-02</pat:naissance>
+            <pat:numéro>111083306303521</pat:numéro>
+            <pat:adresse>
+                <adr:numéro>25</adr:numéro>
+                <adr:rue>Rue des Martyrs</adr:rue>
+                <adr:ville>Grenoble</adr:ville>
+                <adr:codePostal>38042</adr:codePostal>
+            </pat:adresse>
+            <pat:visite date="2015-12-08">
+                <pat:acte id="111" />
+            </pat:visite>
+        </pat:patient>
     </patients>
+
 </cabinet>

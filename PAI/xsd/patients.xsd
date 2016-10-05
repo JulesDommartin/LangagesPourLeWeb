@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.ujf-grenoble.fr/l3miage/patients"
+            xmlns="http://www.ujf-grenoble.fr/l3miage/patients"
+            xmlns:adr="http://www.ujf-grenoble.fr/l3miage/adresse"
+            elementFormDefault="qualified">
+    
+    <xsd:import schemaLocation="adresse.xsd" namespace="http://www.ujf-grenoble.fr/l3miage/adresse"/>
+
+    <xsd:element name="patients" type="Patients"/>
+
+    <xsd:complexType name="Patients">
+        <xsd:sequence>
+
+            <xsd:element name="patient" type="Patient" minOccurs="0" maxOccurs="unbounded"/>
+
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="Patient">
+        <xsd:sequence>
+
+            <xsd:element name="nom" type="xsd:string"/>
+            <xsd:element name="prénom" type="xsd:string"/>
+            <xsd:element name="sexe" type="Sexe"/>
+            <xsd:element name="naissance" type="xsd:date"/>
+            <xsd:element name="numéro" type="Numéro"/>
+            <xsd:element name="adresse" type="adr:Adresse"/>
+            <xsd:element name="visite" type="Visite"/>
+        </xsd:sequence>
+        
+    </xsd:complexType>
+    
+    <xsd:complexType name="Visite">
+        <xsd:sequence>
+            <xsd:element name="acte" maxOccurs="unbounded">
+                <xsd:complexType>
+                    <xsd:attribute name="id" type="xsd:integer" use="required"/>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="date" type="xsd:date" use="required"/>
+        <xsd:attribute name="intervenant" type="xsd:integer" use="optional"/>
+    </xsd:complexType>
+
+    <xsd:simpleType name="Sexe">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="M"/>
+            <xsd:enumeration value="F"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="Numéro">
+        <xsd:restriction base="xsd:integer">
+            <xsd:pattern value="[0-9]{15}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+  </xsd:schema>
+ 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tordu:schema targetNamespace="http://polytech.ujf-grenoble.fr/adherent"
+              xmlns="http://polytech.ujf-grenoble.fr/idty"
+              xmlns:adh="http://polytech.ujf-grenoble.fr/adherent"
+              xmlns:aut="http://polytech.ujf-grenoble.fr/authors"
+              xmlns:tordu="http://www.w3.org/2001/XMLSchema"
+              elementFormDefault="qualified">
+  <tordu:import schemaLocation="idty.xsd" namespace="http://polytech.ujf-grenoble.fr/idty"/>
+  <tordu:import schemaLocation="authors.xsd" namespace="http://polytech.ujf-grenoble.fr/authors"/>
+  
+  <tordu:element name="adherent" type="adh:Adherent"/>
+  
+  <tordu:complexType name="Adherent">
+    <tordu:sequence>
+        
+      <tordu:element name="identité" type="Id"/>
+      <tordu:element name="emprunts" type="adh:Emprunts" minOccurs="0" maxOccurs="unbounded"/>
+      
+    </tordu:sequence>
+  </tordu:complexType>
+  
+  <tordu:complexType name="Emprunts">
+    <tordu:sequence>
+        
+      <tordu:element name="titre" type="tordu:string"/>
+      <tordu:element name="auteur" type="aut:InfoAuteur"/>
+      
+    </tordu:sequence>
+  </tordu:complexType>
+  
+</tordu:schema>
