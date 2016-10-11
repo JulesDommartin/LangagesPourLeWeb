@@ -18,5 +18,6 @@ bool kruskal(vector<vector<int> > &G, vector<vector<int> > &T)
 {
 	// A implementer...
     // Il est fortement recommandé de decouper le code en fonctions intermediaires. En particulier vous ferez une ou des fonctions intermediaires pour le test de connexite.
+    
     return true;
 }
