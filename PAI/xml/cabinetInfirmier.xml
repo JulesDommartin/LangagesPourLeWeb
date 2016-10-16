@@ -8,14 +8,8 @@ and open the template in the editor.
 
 <cabinet
     xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
-    xmlns:adr='http://www.ujf-grenoble.fr/l3miage/adresse'
-    xmlns:pat='http://www.ujf-grenoble.fr/l3miage/patients'
     xmlns='http://www.ujf-grenoble.fr/l3miage/medical'
-    xmlns:inf='http://www.ujf-grenoble.fr/l3miage/infirmiers'
-    xsi:schemaLocation='http://www.ujf-grenoble.fr/l3miage/adresse ../xsd/adresse.xsd
-   http://www.ujf-grenoble.fr/l3miage/patients ../xsd/patients.xsd
-   http://www.ujf-grenoble.fr/l3miage/medical ../xsd/cabinet.xsd
-   http://www.ujf-grenoble.fr/l3miage/infirmiers ../xsd/infirmiers.xsd'>
+    xsi:schemaLocation='http://www.ujf-grenoble.fr/l3miage/medical ../xsd/cabinet.xsd'>
     <nom>Soins à Grenoble</nom>
     <adresse>
         <adr:numéro>60</adr:numéro>
