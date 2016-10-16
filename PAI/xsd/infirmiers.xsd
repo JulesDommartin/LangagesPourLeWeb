@@ -3,7 +3,7 @@
             targetNamespace="http://www.ujf-grenoble.fr/l3miage/infirmiers"
             xmlns="http://www.ujf-grenoble.fr/l3miage/infirmiers"
             elementFormDefault="qualified">
-    
+
     <xsd:element name="infirmiers" type="Infirmiers"/>
 
     <xsd:complexType name="Infirmiers">
@@ -13,7 +13,7 @@
 
         </xsd:sequence>
     </xsd:complexType>
-    
+
     <xsd:complexType name="Infirmier">
         <xsd:sequence>
 
@@ -23,6 +23,5 @@
         </xsd:sequence>
         <xsd:attribute name="id" type="xsd:integer"/>
     </xsd:complexType>
-    
+
   </xsd:schema>
- 

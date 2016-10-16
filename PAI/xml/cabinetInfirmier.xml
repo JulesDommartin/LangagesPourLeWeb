@@ -38,7 +38,7 @@ and open the template in the editor.
             <inf:nom>Ochon</inf:nom>
             <inf:prénom>Paul</inf:prénom>
             <inf:photo>paul.png</inf:photo>
-        </inf:infirmier>  
+        </inf:infirmier>
     </infirmiers>
     <patients>
         <pat:patient>
