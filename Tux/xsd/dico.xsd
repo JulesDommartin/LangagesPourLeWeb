@@ -13,7 +13,13 @@ and open the template in the editor.
     <xs:element name="dico" type="Dico"/>
     <xs:complexType name="Dico">
         <xs:sequence>
-            <xs:element name="mot" type="xs:string" minOccurs="5" maxOccurs="unbounded"/>
+            <xs:element name="mot" type="Element" minOccurs="5" maxOccurs="unbounded"/>
         </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Element">
+        <xs:sequence>
+            <xs:element name="contenu" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute type="xs:integer" name="niveau" use="required"/>
     </xs:complexType>
 </xs:schema>

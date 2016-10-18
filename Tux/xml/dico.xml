@@ -9,22 +9,22 @@ and open the template in the editor.
 <dic:dico xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
     xmlns:dic='http://xml.netbeans.org/schema/dico'
     xsi:schemaLocation='http://xml.netbeans.org/schema/dico file:/home/d/dommartj/Documents/LangagesPourLeWeb/Tux/xsd/dico.xsd'>
-    <dic:mot>
-        Rouge
+    <dic:mot niveau="2">
+        <dic:contenu>Rouge</dic:contenu>
     </dic:mot>
-    <dic:mot>
-        Avion
+    <dic:mot niveau="2">
+        <dic:contenu>Avion</dic:contenu>
     </dic:mot>
-    <dic:mot>
-        Poisson
+    <dic:mot niveau="3">
+        <dic:contenu>Poisson</dic:contenu>
     </dic:mot>
-    <dic:mot>
-        Caresse
+    <dic:mot niveau="3">
+        <dic:contenu>Caresse</dic:contenu>
     </dic:mot>
-    <dic:mot>
-        Linux
+    <dic:mot niveau="2">
+        <dic:contenu>Linux</dic:contenu>
     </dic:mot>
-    <dic:mot>
-        Clavier
+    <dic:mot niveau="1">
+        <dic:contenu>Clavier</dic:contenu>
     </dic:mot>
 </dic:dico>
