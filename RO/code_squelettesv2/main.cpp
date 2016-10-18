@@ -9,8 +9,8 @@
 using namespace std;
 
 // **************** BINOME ****************
-// Etudiant 1: NOM Prénom:
-// Etudiant 2: NOM Prénom: 
+// Etudiant 1: DOMMARTIN Jules
+// Etudiant 2: JIMENEZ Pablo
 
 
 void test(vector<vector<int> > &G, vector<string> &adr)
