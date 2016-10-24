@@ -24,13 +24,17 @@
     <xsl:template match="/">
         <html>
             <head>
-                <title><xsl:value-of select="$infirmier/cab:prénom"/></title>
+                <title>Fiche infirmière : <xsl:value-of select="$infirmier/cab:nom"/></title>
                 <script type="text/javascript" src="../web/js/script.js"></script>
                 <link href="../web/css/secretary.css" rel="stylesheet" type="text/css"/>
             </head>
             <body>
                 <div class="infirmier">
                     <h2>Bonjour <xsl:value-of select="$infirmier/cab:prénom"/>,</h2>
+                    <img class="photo-infirmiere">
+                        <xsl:attribute name="src">../IHM/L3M-Projet/data/<xsl:value-of select="$infirmier/cab:photo"/>
+                        </xsl:attribute>
+                    </img>
                     <br/>
                     <p>Aujourd'hui, vous avez <xsl:value-of select="count(//cab:patient/cab:visite[@intervenant=$destinedId])"/> patient(s)</p> 
             
@@ -85,7 +89,7 @@
     <xsl:template match="cab:acte">
         <xsl:variable name="idActe" select="./@id"/>
         <li>
-            <xsl:value-of select="$actes/act:actes/act:acte[@id=$idActe]"/>
+            - <xsl:value-of select="$actes/act:actes/act:acte[@id=$idActe]"/>
         </li>
     </xsl:template>
 
