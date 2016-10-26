@@ -21,8 +21,8 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=Cygwin-Windows
-CND_DLIB_EXT=dll
+CND_PLATFORM=GNU-Linux-x86
+CND_DLIB_EXT=so
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -35,11 +35,11 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/1aa87700/affiche.o \
-	${OBJECTDIR}/_ext/1aa87700/initialisation.o \
-	${OBJECTDIR}/_ext/1aa87700/kruskal.o \
-	${OBJECTDIR}/_ext/1aa87700/main.o \
-	${OBJECTDIR}/_ext/1aa87700/tsp.o
+	${OBJECTDIR}/_ext/447248128/affiche.o \
+	${OBJECTDIR}/_ext/447248128/initialisation.o \
+	${OBJECTDIR}/_ext/447248128/kruskal.o \
+	${OBJECTDIR}/_ext/447248128/main.o \
+	${OBJECTDIR}/_ext/447248128/tsp.o
 
 
 # C Compiler Flags
@@ -60,36 +60,36 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ro_project.exe
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ro_project
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ro_project.exe: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ro_project: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ro_project ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/_ext/1aa87700/affiche.o: ../RO/code_squelettesv2/affiche.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1aa87700
+${OBJECTDIR}/_ext/447248128/affiche.o: ../RO/code_squelettesv2/affiche.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/447248128
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1aa87700/affiche.o ../RO/code_squelettesv2/affiche.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/447248128/affiche.o ../RO/code_squelettesv2/affiche.cpp
 
-${OBJECTDIR}/_ext/1aa87700/initialisation.o: ../RO/code_squelettesv2/initialisation.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1aa87700
+${OBJECTDIR}/_ext/447248128/initialisation.o: ../RO/code_squelettesv2/initialisation.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/447248128
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1aa87700/initialisation.o ../RO/code_squelettesv2/initialisation.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/447248128/initialisation.o ../RO/code_squelettesv2/initialisation.cpp
 
-${OBJECTDIR}/_ext/1aa87700/kruskal.o: ../RO/code_squelettesv2/kruskal.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1aa87700
+${OBJECTDIR}/_ext/447248128/kruskal.o: ../RO/code_squelettesv2/kruskal.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/447248128
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1aa87700/kruskal.o ../RO/code_squelettesv2/kruskal.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/447248128/kruskal.o ../RO/code_squelettesv2/kruskal.cpp
 
-${OBJECTDIR}/_ext/1aa87700/main.o: ../RO/code_squelettesv2/main.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1aa87700
+${OBJECTDIR}/_ext/447248128/main.o: ../RO/code_squelettesv2/main.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/447248128
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1aa87700/main.o ../RO/code_squelettesv2/main.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/447248128/main.o ../RO/code_squelettesv2/main.cpp
 
-${OBJECTDIR}/_ext/1aa87700/tsp.o: ../RO/code_squelettesv2/tsp.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1aa87700
+${OBJECTDIR}/_ext/447248128/tsp.o: ../RO/code_squelettesv2/tsp.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/447248128
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1aa87700/tsp.o ../RO/code_squelettesv2/tsp.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/447248128/tsp.o ../RO/code_squelettesv2/tsp.cpp
 
 # Subprojects
 .build-subprojects:
@@ -97,7 +97,7 @@ ${OBJECTDIR}/_ext/1aa87700/tsp.o: ../RO/code_squelettesv2/tsp.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ro_project.exe
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ro_project
 
 # Subprojects
 .clean-subprojects:
