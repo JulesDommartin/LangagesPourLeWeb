@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://polytech.ujf-grenoble.fr/point"
+            xmlns="http://polytech.ujf-grenoble.fr/point"
+           elementFormDefault="qualified">
+    
+    <xs:element name="point" type="Point"/>
+    
+    <xs:complexType name="Point">
+        <xs:sequence>
+            <xs:element name="x" type="xs:double"/>
+            <xs:element name="y" type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+</xs:schema>
