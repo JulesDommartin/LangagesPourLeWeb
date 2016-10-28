@@ -22,10 +22,10 @@ public class Room {
     private String textureSouth;
     
     public Room() {
-        this.depth          = 50;
-        this.height         = 50;
-        this.width          = 40;
-        this.textureBottom  = "textures/earth.png";
+        this.depth          = 100;
+        this.height         = 100;
+        this.width          = 100;
+        this.textureBottom  = "textures/damier.jpg";
         this.textureNorth   = "textures/top.png";
         this.textureEast    = "textures/top.png";
         this.textureWest    = "textures/top.png";
