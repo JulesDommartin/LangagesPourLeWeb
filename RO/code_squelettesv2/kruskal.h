@@ -8,7 +8,7 @@ using namespace std;
 struct Arete;
 
 
-
+vector<Arete> tri_selection(vector<vector<int> > &grapheInit , vector<Arete> &aretesTriees);
 
 // Fonction kruskal: Stocke dans T un arbre couvrant de poids minimum du graphe G
 // Renvoie true si G a un arbre couvrant, false sinon

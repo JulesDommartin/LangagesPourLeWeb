@@ -4,13 +4,14 @@
 #include "tsp.h"
 #include "affiche.h"
 #include "initialisation.h"
+#include "kruskal.h"
 
 
 using namespace std;
 
 // **************** BINOME ****************
-// Etudiant 1: DOMMARTIN Jules
-// Etudiant 2: JIMENEZ Pablo
+// Etudiant 1: DOMMARTIN Jules:
+// Etudiant 2: JIMENEZ Pablo:
 
 
 void test(vector<vector<int> > &G, vector<string> &adr)
@@ -20,9 +21,16 @@ void test(vector<vector<int> > &G, vector<string> &adr)
 
 void test_kruskal(vector<vector<int> > &G)
 {
-    cout << "Un arbre couvrant de ce graphe est: " << endl;
-    // A completer pour tester votre kruskal...
-    cout << endl;
+    vector<vector<int> > T;
+    
+    if (kruskal(G,T)){
+        cout << "Un arbre couvrant de ce graphe est: " << endl;
+        afficheGraphe(T);
+        cout << endl;
+    }
+    else{
+        cout << "Par d'arbre couvrant pour ce graphe" << endl;
+    }
 }
 
 
@@ -36,7 +44,7 @@ int main()
      Pour pouvoir tester la partie RO avant integration dans le reste du projet, on utilise des donnees artificielles choisies arbitrairement/aleatoirement:
      */
     
-    int n=5;
+    int n=5; // taille pour le graphe avec n sommets
     int distance_max=9;
     vector<string> * adresses = new vector<string>(n);
     initialise_adresses(adresses);
@@ -63,7 +71,7 @@ int main()
      J'evaluerai votre programme AVEC puis SANS l'appel a test */
     test(refsurGraphe, refsurAdresses);
     
-    /* En particulier, on fera ici un test de la fonction kruskal, et on affichera l'arbre couvrant calculé*/
+    /* En particulier, on fera ici un test de la fonction kruskal, et on affichera l'arbre couvrant calculé */
     test_kruskal(refsurGraphe);
     
     
