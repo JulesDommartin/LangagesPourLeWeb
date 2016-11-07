@@ -12,38 +12,39 @@ struct Arete
 };
 
 
-vector<Arete> tri_selection(vector<vector<int> > &grapheInit)
-{
-    vector<Arete> aretesTriees;
+vector<Arete*> tri_selection(vector<vector<int> > &grapheInit)
+{    
+    int k = 0;
+    unsigned int longueur = grapheInit.size();
     
-    int k = 0, longueur = grapheInit.size();
-    
-    for(int i=0; i<longueur; i++)
+    vector<Arete*> aretesTriees = vector<Arete*> (longueur * longueur);
+
+    for(unsigned int i=0; i<longueur; i++)
     {
         
-        for(int j=0; j<i; j++)
+        for(unsigned int j=0; j<i; j++)
         {
-            
-            aretesTriees[k] = Arete(i, j, grapheInit[i][j]);
+            aretesTriees[k] = new Arete(i, j, grapheInit[i][j]);
             k++;
             
         }
         
     }
     
-    for(int j=0; j<longueur; j++)
+    for(unsigned int j=0; j<longueur; j++)
     {
 
         int maxCourant = j;
-        
-        for(int i=j; i<longueur; i++)
+      
+        for(unsigned int i=j; i<longueur; i++)
         {
-            if (aretesTriees[i].poids > aretesTriees[maxCourant].poids){ maxCourant = i; }
+            if (aretesTriees[i]->poids > aretesTriees[maxCourant]->poids){ maxCourant = i; }
         }
         
-        Arete tmp = Arete(aretesTriees[j].u, aretesTriees[j].v, aretesTriees[j].poids);
+        Arete* tmp = new Arete(aretesTriees[j]->u, aretesTriees[j]->v, aretesTriees[j]->poids);
         
         aretesTriees[j] = aretesTriees[maxCourant];
+
         aretesTriees[maxCourant] = tmp;
         
     }
@@ -52,15 +53,17 @@ vector<Arete> tri_selection(vector<vector<int> > &grapheInit)
     
 }
 
-void recConnexe(vector<vector<int> > &G, int sommetCourant, vector<int> tabSommetVisite){
+void recConnexe(vector<vector<int> > &G, unsigned int sommetCourant, vector<int> tabSommetVisite){
 
     tabSommetVisite[sommetCourant] = 1;
     
-    for(int i=0; i<G[sommetCourant].size(); i++){
-        if( (G[sommetCourant][i] != 0) && (tabSommetVisite[i] = 0) ){
+    for(unsigned int i=0; i<G[sommetCourant].size(); i++){
+        if( (G[sommetCourant][i] != 0) && (tabSommetVisite[i] == 0) ){
             recConnexe(G, i, tabSommetVisite);
         }
     }
+
+    cout << "On a fini aussi ça" << endl;
            
 }
 
@@ -68,12 +71,15 @@ bool estConnexe(vector<vector<int> > &G){
     
     vector<int> tabSommetVisite (G.size(), 0);
     bool connexe = true;
-    
-    for(int i=0; i<G.size(); i++){
+
+    for(unsigned int i=0; i<G.size(); i++){
+        recConnexe(G, i, tabSommetVisite); 
         if (tabSommetVisite[i] == 0){
             connexe = false;
         }
     }
+
+    cout << "On a fini ça" << endl;
     
     return connexe;
 }
@@ -85,38 +91,46 @@ bool kruskal(vector<vector<int> > &G, vector<vector<int> > &T)
     
 	// A implementer...
     // Il est fortement recommandé de decouper le code en fonctions intermediaires. En particulier vous ferez une ou des fonctions intermediaires pour le test de connexite.
-    vector<Arete> aretesTriees;
+    vector<Arete*> aretesTriees;
 
     aretesTriees = tri_selection(G); // tri
 
-    int taille = aretesTriees.size();
+    unsigned int taille = aretesTriees.size();
     
-    for(int i = 0; i < G.size(); i++){
-        for(int j = 0; j < G.size(); j++){
+    cout << "On a passé le tri" << endl;
+
+    for(unsigned int i = 0; i < G.size(); i++){
+        for(unsigned int j = 0; j < G.size(); j++){
             T[i][j]=G[i][j];
         }
     }
 
+    cout << "On est passé là" << endl;
     
     int i = 0;
     
     while(taille > T.size() - 1){
         
-        T[aretesTriees[i].u][aretesTriees[i].v] = 0;
+        T[aretesTriees[i]->u][aretesTriees[i]->v] = 0;
         
-        
+        cout << "Check" << endl;
+
         if (estConnexe(T)){
             taille--;
+            cout << "Oui" << endl;
         }
         else{
-            T[aretesTriees[i].u][aretesTriees[i].v] = aretesTriees[i].poids;
+            T[aretesTriees[i]->u][aretesTriees[i]->v] = aretesTriees[i]->poids;
+            cout << "Non" << endl;
         }
         
         i++;
     }
+
+    cout << "On va passer là" << endl;
     
-    for(int i = 0; i < G.size(); i++){
-        for(int j = 0; j < G.size(); j++){
+    for(unsigned int i = 0; i < G.size(); i++){
+        for(unsigned int j = 0; j < G.size(); j++){
             if (T[i][j]!=G[i][j]){
                 return true;
             };

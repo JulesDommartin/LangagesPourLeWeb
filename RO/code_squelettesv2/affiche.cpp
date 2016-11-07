@@ -9,7 +9,7 @@ void afficheGraphe(vector<vector<int> > &G)
 {
     cout << "Graphe considéré (taille " << G.size() << "):" << endl;
     
-    int i,j;
+    unsigned int i,j;
     for (i=0; i<G.size(); i++)
     {
         for (j=0; j<G[0].size(); j++)
@@ -27,7 +27,7 @@ void afficheGraphe(vector<vector<int> > &G)
 void afficheVectorInt(vector<int>  &tab)
 {
     
-    int i;
+    unsigned int i;
     for (i=0; i<tab.size(); i++)
     {
     
@@ -41,7 +41,7 @@ void afficheVectorInt(vector<int>  &tab)
 void afficheVectorString(vector<string> &tab)
 {
     
-    int i;
+    unsigned int i;
     for (i=0; i<tab.size(); i++)
     {
         

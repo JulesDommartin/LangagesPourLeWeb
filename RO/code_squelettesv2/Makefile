@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -Wall
+CFLAGS = -Wall -std=c++11
 EXEC = TSP
 HEADERS = $(wildcard *.h)
 OBJECTS = $(patsubst %.cpp, %.o, $(wildcard *.cpp))

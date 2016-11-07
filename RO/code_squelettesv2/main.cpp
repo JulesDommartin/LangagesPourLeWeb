@@ -21,7 +21,11 @@ void test(vector<vector<int> > &G, vector<string> &adr)
 
 void test_kruskal(vector<vector<int> > &G)
 {
-    vector<vector<int> > T;
+    vector<vector<int> > T = vector<vector<int> > (G.size());
+
+    for (unsigned int i = 0; i < G.size(); i++) {
+        T[i] = vector<int> (G.size());
+    }
     
     if (kruskal(G,T)){
         cout << "Un arbre couvrant de ce graphe est: " << endl;
