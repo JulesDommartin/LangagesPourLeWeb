@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<ns1:adherent
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xmlns:ns3='http://polytech.ujf-grenoble.fr/idty'
+    xmlns:ns2='http://polytech.ujf-grenoble.fr/authors'
+    xmlns:ns1='http://polytech.ujf-grenoble.fr/adherent'
+    xsi:schemaLocation='http://polytech.ujf-grenoble.fr/idty file:/home/d/dommartj/Documents/LangagesPourLeWeb/TP4/src/xsd/idty.xsd
+   http://polytech.ujf-grenoble.fr/authors file:/home/d/dommartj/Documents/LangagesPourLeWeb/TP4/src/xsd/authors.xsd
+   http://polytech.ujf-grenoble.fr/adherent file:/home/d/dommartj/Documents/LangagesPourLeWeb/TP4/src/xsd/adherent.xsd'>
+    <ns1:identité>
+        <ns3:nom>Hugo</ns3:nom>
+        <ns3:prenom>Victor</ns3:prenom>
+    </ns1:identité>
+    <ns1:emprunts>
+        <ns1:titre>La petite camionette à la prairie</ns1:titre>
+        <ns1:auteur>
+            <ns2:id>
+                <ns3:nom>Hugo</ns3:nom>
+                <ns3:prenom>Victor</ns3:prenom>
+            </ns2:id>
+            <ns2:dateNaissance>
+                1997-08-02
+            </ns2:dateNaissance>
+            <ns2:dateMort>
+                1998-08-02
+            </ns2:dateMort>
+        </ns1:auteur>
+    </ns1:emprunts>
+</ns1:adherent>

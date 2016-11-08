@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://polytech.ujf-grenoble.fr/authors"
+            xmlns="http://polytech.ujf-grenoble.fr/authors"
+            xmlns:idt="http://polytech.ujf-grenoble.fr/idty"
+            elementFormDefault="qualified">
+    
+    <xsd:import schemaLocation="idty.xsd" namespace="http://polytech.ujf-grenoble.fr/idty"/>
+  
+    <xsd:element name="infoAuteur" type="InfoAuteur"/>
+  
+    <xsd:complexType name="InfoAuteur">
+        <xsd:sequence>
+
+            <xsd:element name="id" type="idt:Id"/>
+            <xsd:element name="dateNaissance" type="xsd:date"/>
+            <xsd:element name="dateMort" type="xsd:date" minOccurs="0"/>
+
+        </xsd:sequence>
+    </xsd:complexType>
+  
+</xsd:schema>

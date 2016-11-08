@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://xml.netbeans.org/schema/meteov2"
+           targetNamespace="http://xml.netbeans.org/schema/meteov2"
+           elementFormDefault="qualified">
+    <xs:element name="meteoVille" type="MeteoVille"/>
+    <xs:complexType name="MeteoVille">
+        <xs:sequence>
+            <xs:element name="ville" type="Ville"/>
+            <xs:element name="date" type="xs:date"/>
+            <xs:element name="temperatureMin" type="xs:double" />
+            <xs:element name="temperatureMax" type="xs:double" />            
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Ville">
+        <xs:sequence>
+            <xs:element name="nom" type="xs:string"/>
+            <xs:element name="pays" type="xs:string"/>
+        </xs:sequence>        
+    </xs:complexType>
+</xs:schema>
+

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<ech:echec
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xmlns:ech='http://ujf-grenoble.fr/echec'
+    xsi:schemaLocation='http://ujf-grenoble.fr/echec file:/home/d/dommartj/Documents/LangagesPourLeWeb/TP3-ECHEC/xsd/echec.xsd'>
+    <ech:commentaire>AFG (noir) contre Jek (blanc), au 31eme coup, partie du 7 février 2003</ech:commentaire>
+
+</ech:echec>

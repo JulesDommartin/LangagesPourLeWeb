@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://ujf-grenoble.fr/echec"
+           targetNamespace="http://ujf-grenoble.fr/echec"
+           elementFormDefault="qualified">
+    
+    <xs:element name="echec" type="Echec"/>
+    
+    <xs:complexType name="Echec">
+        <xs:sequence>
+            <xs:element name="commentaire" type="xs:string"/>
+            <xs:element name="piecesBlanches" type="PiecesBlanches"/>
+            <xs:element name="piecesNoires" type="PiecesNoires"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="PiecesBlanches">
+        <xs:sequence>
+            <xs:element name="piece" type="Piece" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="PiecesNoires">
+        <xs:sequence>
+            <xs:element name="piece" type="Piece" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="Piece">
+        <xs:sequence>
+            <xs:element name="nom" type="Nom"/>
+            <xs:element name="position" type="Position"/>    
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:simpleType name="Nom">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="roi"/>
+            <xs:enumeration value="reine"/>
+            <xs:enumeration value="tour"/>
+            <xs:enumeration value="fou"/>
+            <xs:enumeration value="cavalier"/>
+            <xs:enumeration value="pion"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="Position">
+        <xs:sequence>
+            <xs:element name="colonne" type="Colonne"/>
+            <xs:element name="ligne" type="Ligne"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:simpleType name="Colonne">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-H]"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="Ligne">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="8"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+</xs:schema>

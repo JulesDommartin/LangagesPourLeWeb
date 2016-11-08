@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<po:point
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xmlns:po='http://polytech.ujf-grenoble.fr/point'
+    xsi:schemaLocation='http://polytech.ujf-grenoble.fr/point file:/home/d/dommartj/Documents/LangagesPourLeWeb/TP7/xsd/point.xsd'>
+    <po:x>2.0</po:x>
+    <po:y>5.0</po:y>
+
+</po:point>

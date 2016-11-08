@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<ech:echec
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xmlns:ech='http://ujf-grenoble.fr/echec'
+    xsi:schemaLocation='http://ujf-grenoble.fr/echec file:/home/d/dommartj/Documents/LangagesPourLeWeb/TP3-ECHEC/xsd/echec.xsd'>
+    
+    <ech:commentaire>AFG contre Jek, au 31eme coup, partie du 7 février 2003</ech:commentaire>
+    <ech:piecesBlanches>
+        <ech:piece><ech:nom>roi</ech:nom><ech:position><ech:colonne>G</ech:colonne><ech:ligne>1</ech:ligne></ech:position></ech:piece>
+        <ech:piece><ech:nom>fou</ech:nom><ech:position><ech:colonne>D</ech:colonne><ech:ligne>6</ech:ligne></ech:position></ech:piece>
+        <ech:piece><ech:nom>tour</ech:nom><ech:position><ech:colonne>E</ech:colonne><ech:ligne>1</ech:ligne></ech:position></ech:piece>
+        <ech:piece><ech:nom>pion</ech:nom><ech:position><ech:colonne>A</ech:colonne><ech:ligne>4</ech:ligne></ech:position></ech:piece>
+        <ech:piece><ech:nom>pion</ech:nom><ech:position> <ech:colonne>B</ech:colonne> <ech:ligne>3</ech:ligne> </ech:position></ech:piece>
+        <ech:piece><ech:nom>pion</ech:nom><ech:position> <ech:colonne>C</ech:colonne> <ech:ligne>2</ech:ligne> </ech:position></ech:piece>
+        <ech:piece><ech:nom>pion</ech:nom><ech:position> <ech:colonne>F</ech:colonne> <ech:ligne>2</ech:ligne> </ech:position></ech:piece>
+        <ech:piece><ech:nom>pion</ech:nom><ech:position> <ech:colonne>G</ech:colonne> <ech:ligne>2</ech:ligne> </ech:position></ech:piece>
+        <ech:piece><ech:nom>pion</ech:nom><ech:position> <ech:colonne>H</ech:colonne> <ech:ligne>5</ech:ligne> </ech:position></ech:piece>
+    </ech:piecesBlanches>
+ 
+    <ech:piecesNoires>
+        <ech:piece><ech:nom>roi</ech:nom><ech:position> <ech:colonne>B</ech:colonne> <ech:ligne>6</ech:ligne> </ech:position> </ech:piece>
+        <ech:piece><ech:nom>reine</ech:nom><ech:position> <ech:colonne>A</ech:colonne> <ech:ligne>7</ech:ligne> </ech:position> </ech:piece>
+        <ech:piece><ech:nom>pion</ech:nom><ech:position> <ech:colonne>D</ech:colonne> <ech:ligne>4</ech:ligne> </ech:position> </ech:piece>
+    </ech:piecesNoires>
+</ech:echec>
