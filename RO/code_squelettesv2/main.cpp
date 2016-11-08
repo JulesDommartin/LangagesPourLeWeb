@@ -19,21 +19,23 @@ void test(vector<vector<int> > &G, vector<string> &adr)
     // A completer avec les tests de vos fonctions intermediaires que vous jugerez pertinents.
 }
 
-void test_kruskal(vector<vector<int> > &G)
+void test_kruskal(vector<vector<int> > &refsurGraphe)
 {
-    vector<vector<int> > T = vector<vector<int> > (G.size());
-
-    for (unsigned int i = 0; i < G.size(); i++) {
-        T[i] = vector<int> (G.size());
+    vector<vector<int> > T = vector<vector<int> > (refsurGraphe.size());
+    
+    for (unsigned int i = 0; i < refsurGraphe.size(); i++) {
+        T[i] = vector<int> (refsurGraphe.size());
     }
     
-    if (kruskal(G,T)){
-        cout << "Un arbre couvrant de ce graphe est: " << endl;
+    if (kruskal(refsurGraphe,T)){
+        cout << "Un arbre couvrant de ce graphe est: " << endl << endl;
         afficheGraphe(T);
         cout << endl;
+
+        refsurGraphe = T;
     }
     else{
-        cout << "Par d'arbre couvrant pour ce graphe" << endl;
+        cout << "Pas d'arbre couvrant pour ce graphe" << endl;
     }
 }
 
@@ -76,11 +78,8 @@ int main()
     test(refsurGraphe, refsurAdresses);
     
     /* En particulier, on fera ici un test de la fonction kruskal, et on affichera l'arbre couvrant calculé */
+
     test_kruskal(refsurGraphe);
-    
-    
-    
-    
     
     /* Appel à la fonction principale de TSP, resultat stocke dans ordreParcours */
     vector<int> ordreParcours = travelingSalesmanPerson(refsurGraphe, 0);
