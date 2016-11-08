@@ -17,7 +17,6 @@ vector<Arete*> tri(vector<vector<int> > &grapheInit)
     unsigned int i, j;
     vector <Arete*> aretesTriees;
 
-    // On copie les points du graphe dans un tableau d'arêtes qui ont un poid
     for(i=0; i<grapheInit.size(); i++){
         for(j=i; j<grapheInit[i].size(); j++){
             if(grapheInit[i][j] != 0){
@@ -30,6 +29,7 @@ vector<Arete*> tri(vector<vector<int> > &grapheInit)
     i = 0;
 
     // On trie les arêtes avec la méthode du tri à bulles
+
     while(i < aretesTriees.size()-1){
         if(aretesTriees[i]->poids < aretesTriees[i+1]->poids){
 
@@ -66,18 +66,18 @@ void recConnexe(vector<vector<int> > &G, unsigned int sommetCourant, vector<int>
 bool estConnexe(vector<vector<int> > &G){
     
     // On crée un tableau de sommets visités
+    // On set tous les sommets du tableau à 0 (0 = sommet non visité, 1 = sommet visité)
     vector<int> tabSommetVisite = vector<int> (G.size());
     bool connexe = true;
 
-    // On set tous les sommets du tableau à 0 (0 = sommet non visité, 1 = sommet visité)
     for(unsigned int i=0; i<G.size(); i++){
         tabSommetVisite[i] = 0;
     }
 
-    // On appelle la fonction récursive
+    // On appelle la fonction récursive   
+    // Si un sommet du tableau est set à 0, alors on a pas visité le sommet == le graphe n'est pas connexe
     recConnexe(G, 0, tabSommetVisite);
     
-    // Si un sommet du tableau est set à 0, alors on a pas visité le sommet == le graphe n'est pas connexe
     for(unsigned int i=0; i<G.size(); i++){
         if (tabSommetVisite[i] == 0){
             connexe = false;
