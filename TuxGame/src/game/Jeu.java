@@ -6,6 +6,8 @@
 package game;
 
 import env3d.Env;
+import java.util.ArrayList;
+import management.Letter;
 import org.lwjgl.input.Keyboard;
 
 /**
@@ -18,10 +20,12 @@ public class Jeu {
     private boolean finished;
     private Tux     tux1;
     private Tux     tux2; // For a second player
+    private ArrayList<Letter> lesLettres;
     
     public Jeu() {
         // Create the new environment.  Must be done in the same
         // method as the game loop
+        lesLettres = new ArrayList<Letter>();
         env = new Env();
         // Instanciate a room 
         Room room;
@@ -37,7 +41,9 @@ public class Jeu {
         env.setCameraPitch(-40);
         // Turn off the default controls
         env.setDefaultControl(false);
-
+        
+        createLetters();
+        
         //initialize
         finished = false;
     }
@@ -57,6 +63,10 @@ public class Jeu {
         }
         // Just a little clean up
         env.exit();
+    }
+    
+    private void createLetters() {
+
     }
     
 }

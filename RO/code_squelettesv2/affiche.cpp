@@ -28,7 +28,7 @@ void afficheGraphe(vector<vector<int> > &G)
 
 /* Fonction qui affiche le vector d'entiers passe en parametre
  Les entrees sont toutes sur la meme ligne et sont separees par un point-virgule */
-void afficheVectorInt(vector<int>  &tab)
+void afficheVectorInt(vector<unsigned int>  &tab)
 {
     
     unsigned int i;

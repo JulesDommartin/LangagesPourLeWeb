@@ -89,7 +89,7 @@ int main()
     test_kruskal(refsurGraphe);
     
     /* Appel à la fonction principale de TSP, resultat stocke dans ordreParcours */
-    vector<int> ordreParcours = travelingSalesmanPerson(refsurGraphe, 0);
+    vector<unsigned int> ordreParcours = travelingSalesmanPerson(refsurGraphe, 0);
     cout << "L'ordre de parcours de la tournée est: " << endl;
     afficheVectorInt(ordreParcours);
     

@@ -34,83 +34,39 @@ public class DateNaissance {
     public void setJour(int jour) {
         boolean bissextile = ((this.annee % 4 == 0 && this.annee % 100 != 0) || (this.annee % 4 == 0 && this.annee % 100 == 0 && this.annee % 400 == 0));
         switch (this.mois) {
-            case 1  :
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
                 if (jour >= 1 && jour <= 31) {
                     this.jour = jour;
                 } else {
                     System.out.println("Impossible de modifier le jour.");
                 }   
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                if (jour >= 1 && jour <= 30) {
+                    this.jour = jour;
+                } else {
+                    System.out.println("Impossible de modifier le jour.");
+                }
+                break;
             case 2  :
                 if ((bissextile && (jour >= 1 && jour <= 29)) || (!bissextile && (jour >= 1 && jour <= 28))) {
                     this.jour = jour;
                 } else {
                     System.out.println("Impossible de modifier le jour.");
-                }   
-            case 3  :
-                if (jour >= 1 && jour <= 31) {
-                    this.jour = jour;
-                } else {
-                    System.out.println("Impossible de modifier le jour.");
-                }   
-            case 4  :
-                if (jour >= 1 && jour <= 30) {
-                    this.jour = jour;
-                } else {
-                    System.out.println("Impossible de modifier le jour.");
-                }   
-            case 5  :
-                if (jour >= 1 && jour <= 31) {
-                    this.jour = jour;
-                } else {
-                    System.out.println("Impossible de modifier le jour.");
-                }   
-            case 6  :
-                if (jour >= 1 && jour <= 30) {
-                    this.jour = jour;
-                } else {
-                    System.out.println("Impossible de modifier le jour.");
-                }   
-            case 7  :
-                if (jour >= 1 && jour <= 31) {
-                    this.jour = jour;
-                } else {
-                    System.out.println("Impossible de modifier le jour.");
-                }   
-            case 8  :
-                if (jour >= 1 && jour <= 31) {
-                    this.jour = jour;
-                } else {
-                    System.out.println("Impossible de modifier le jour.");
-                }   
-            case 9  :
-                if (jour >= 1 && jour <= 30) {
-                    this.jour = jour;
-                } else {
-                    System.out.println("Impossible de modifier le jour.");
-                }   
-            case 10 :
-                if (jour >= 1 && jour <= 31) {
-                    this.jour = jour;
-                } else {
-                    System.out.println("Impossible de modifier le jour.");
-                }   
-            case 11 :
-                if (jour >= 1 && jour <= 30) {
-                    this.jour = jour;
-                } else {
-                    System.out.println("Impossible de modifier le jour.");
-                }   
-            case 12 :
-                if (jour >= 1 && jour <= 31) {
-                    this.jour = jour;
-                } else {
-                    System.out.println("Impossible de modifier le jour.");
-                }             
+                }            
             default:
                 System.out.println("Impossible de modifier le jour.");
                 break;
         }
-        this.jour = jour;
     }
 
     public int getMois() {

@@ -6,7 +6,7 @@
 
 using namespace std;
 
-bool existeDeja (vector<int> &L, unsigned int sommetACheck){
+bool existeDeja (vector<unsigned int> &L, unsigned int sommetACheck){
 
 	for(unsigned int i=0; i<L.size(); i++){
 
@@ -20,7 +20,7 @@ bool existeDeja (vector<int> &L, unsigned int sommetACheck){
 
 }
 
-void parcoursProfondeur(vector<vector<int> > &G, unsigned int sommetCourant, vector<int> &L, unsigned int ordre){
+void parcoursProfondeur(vector<vector<int> > &G, unsigned int sommetCourant, vector<unsigned int> &L, unsigned int ordre){
     
     L[ordre] = sommetCourant;
 
@@ -42,18 +42,18 @@ void parcoursProfondeur(vector<vector<int> > &G, unsigned int sommetCourant, vec
 
 // G: graphe pondere non oriente complet verifiant l'inegalite triangulaire
 // Retourne les sommets dans l'ordre de visite d'un tour de longueur au plus 2 fois l'optimal
-vector<int> travelingSalesmanPerson(vector<vector<int> > &G, int depart)
+vector<unsigned int> travelingSalesmanPerson(vector<vector<int> > &G, int depart)
 {
-    vector<int> L = vector<int> (G.size());
+    vector<unsigned int> L = vector<unsigned int> (G.size());
 
-    int ordre = 0;
+    unsigned int * ordre = 0;
 
     for(unsigned int i=0; i<G.size(); i++){
         L[i] = 0;
     }
 
 
-    parcoursProfondeur(G, 0, L, ordre);
+    parcoursProfondeur(G, depart, L, *(ordre));
 
     return L;
 }
@@ -62,7 +62,7 @@ vector<int> travelingSalesmanPerson(vector<vector<int> > &G, int depart)
 
 /* Fonction reordonne: doit modifier le vector de strings pointés par adresses, pour respecter le nouvel ordre donne par le second parametre.
   Exemple: si ordre contient (3,1,2,4) et (*adresses) contient (Rue A, Rue B, Rue C, Rue D), alors après appel de la fonction, (*adresses) doit contenir (Rue C, Rue A, Rue B, Rue D) */
-void reordonne(vector<string> *  adresses, vector<int> &ordre)
+void reordonne(vector<string> *  adresses, vector<unsigned int> &ordre)
 {
 
     for(unsigned int i=0; i<ordre.size(); i++){
