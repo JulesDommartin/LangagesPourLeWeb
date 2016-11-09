@@ -35,7 +35,7 @@ void afficheVectorInt(vector<unsigned int>  &tab)
     for (i=0; i<tab.size(); i++)
     {
         
-        cout << tab[i] << "; ";
+        cout << tab[i] + 1 << "; ";
     }
     cout << endl << endl;
     

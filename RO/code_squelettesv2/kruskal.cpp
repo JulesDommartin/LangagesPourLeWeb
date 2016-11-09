@@ -63,23 +63,25 @@ void recConnexe(vector<vector<int> > &G, unsigned int sommetCourant, vector<int>
     
 }
 
-bool estConnexe(vector<vector<int> > &G){
+bool estConnexe(vector<vector<int> > &T){
     
     // On crée un tableau de sommets visités
     // On set tous les sommets du tableau à 0 (0 = sommet non visité, 1 = sommet visité)
-    vector<int> tabSommetVisite = vector<int> (G.size());
+    vector<int> tabSommetVisite = vector<int> (T.size());
     bool connexe = true;
 
-    for(unsigned int i=0; i<G.size(); i++){
+    for(unsigned int i=0; i<T.size(); i++){
         tabSommetVisite[i] = 0;
     }
 
     // On appelle la fonction récursive   
     // Si un sommet du tableau est set à 0, alors on a pas visité le sommet == le graphe n'est pas connexe
-    recConnexe(G, 0, tabSommetVisite);
+
+    recConnexe(T, 0, tabSommetVisite);
     
-    for(unsigned int i=0; i<G.size(); i++){
+    for(unsigned int i=0; i<T.size(); i++){
         if (tabSommetVisite[i] == 0){
+
             connexe = false;
         }
     }
@@ -113,6 +115,7 @@ bool kruskal(vector<vector<int> > &G, vector<vector<int> > &T)
 
         // On set l'arête à 0 (on la retire)
         T[aretesTriees[i]->u][aretesTriees[i]->v] = 0;
+        T[aretesTriees[i]->v][aretesTriees[i]->u] = 0;
 
         // On test si le graphe est connexe sans l'arête enlevée précédemment
         // Oui == on valide l'opération
@@ -122,6 +125,7 @@ bool kruskal(vector<vector<int> > &G, vector<vector<int> > &T)
         }
         else{
             T[aretesTriees[i]->u][aretesTriees[i]->v] = aretesTriees[i]->poids;
+            T[aretesTriees[i]->v][aretesTriees[i]->u] = aretesTriees[i]->poids;
         }
 
         i++;

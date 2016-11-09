@@ -9,7 +9,7 @@ using namespace std;
 bool existeDeja (vector<unsigned int> &L, unsigned int sommetACheck){
 
 	for(unsigned int i=0; i<L.size(); i++){
-
+        /////////cout << "Sommet à check" << sommetACheck << endl;
 		if(L[i] == sommetACheck){
 			return true;
 		}
@@ -20,21 +20,26 @@ bool existeDeja (vector<unsigned int> &L, unsigned int sommetACheck){
 
 }
 
-void parcoursProfondeur(vector<vector<int> > &G, unsigned int sommetCourant, vector<unsigned int> &L, unsigned int ordre){
+
+void parcoursProfondeur(vector<vector<int> > &G, unsigned int sommetCourant, vector<unsigned int> &L){
     
-    L[ordre] = sommetCourant;
+    ////////cout << "On arrive jusque là" << endl;
 
-    ordre++;
+    L.push_back(sommetCourant);
 
-    for(unsigned int i=0; i<G.size(); i++){
+    //////////cout << "sommetCourant : "<< sommetCourant << endl;
+
+
+    /*or(unsigned int i=0; i<L.size(); i++){
         cout << "L[" << i <<"] = "<< L[i] << endl;
-    }
+    }*/
 
     cout << endl;
 
     for(unsigned int i=0; i<G[sommetCourant].size(); i++){
-        if( (G[sommetCourant][i] != 0) && (L[i] == 0) && (existeDeja(L, i) == false) ){
-            parcoursProfondeur(G, i, L, ordre);
+        if( (G[sommetCourant][i] != 0) && (!existeDeja(L, i)) ){
+            //////cout << "oui" << endl;
+            parcoursProfondeur(G, i, L);
         }
     }
     
@@ -44,16 +49,10 @@ void parcoursProfondeur(vector<vector<int> > &G, unsigned int sommetCourant, vec
 // Retourne les sommets dans l'ordre de visite d'un tour de longueur au plus 2 fois l'optimal
 vector<unsigned int> travelingSalesmanPerson(vector<vector<int> > &G, int depart)
 {
-    vector<unsigned int> L = vector<unsigned int> (G.size());
+    vector<unsigned int> L;
 
-    unsigned int * ordre = 0;
+    parcoursProfondeur(G, depart, L);
 
-    for(unsigned int i=0; i<G.size(); i++){
-        L[i] = 0;
-    }
-
-
-    parcoursProfondeur(G, depart, L, *(ordre));
 
     return L;
 }
@@ -64,14 +63,15 @@ vector<unsigned int> travelingSalesmanPerson(vector<vector<int> > &G, int depart
   Exemple: si ordre contient (3,1,2,4) et (*adresses) contient (Rue A, Rue B, Rue C, Rue D), alors après appel de la fonction, (*adresses) doit contenir (Rue C, Rue A, Rue B, Rue D) */
 void reordonne(vector<string> *  adresses, vector<unsigned int> &ordre)
 {
+    vector<string> v = vector<string>(ordre.size());
 
     for(unsigned int i=0; i<ordre.size(); i++){
     	
-    	string tmp;
+    	v[i] = (*adresses)[ordre[i]];
+    }
 
-    	tmp = (*adresses)[i];
-    	(*adresses)[i] = (*adresses)[ordre[i]];
-    	(*adresses)[ordre[i]] = tmp;
+    for (unsigned int i=0; i < ordre.size(); i++) {
+        (*adresses)[i] = v[i];
     }
  
 }
