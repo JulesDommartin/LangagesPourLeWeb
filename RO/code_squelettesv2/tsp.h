@@ -5,10 +5,13 @@
 #include <vector>
 #include <stack>
 #include "kruskal.h"
-
-
+#include "affiche.h"
 
 using namespace std;
+
+// **************** BINOME ****************
+// Etudiant 1: DOMMARTIN Jules:
+// Etudiant 2: JIMENEZ Pablo:
 
 // G: graphe pondere non oriente complet verifiant l'inegalite triangulaire
 // Retourne les sommets dans l'ordre de visite d'un tour de longueur au plus 2 fois l'optimal, en partant de depart.

@@ -4,9 +4,11 @@
 #include <iostream>
 #include <vector>
 
-
 using namespace std;
 
+// **************** BINOME ****************
+// Etudiant 1: DOMMARTIN Jules:
+// Etudiant 2: JIMENEZ Pablo:
 
 /* Ce module sert a creer des donnees artificielles pour les tests de la partie RO.
  Apres integration dans le reste du projet, les veritables donnees à utiliser seront precedemment calculees */

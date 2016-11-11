@@ -6,6 +6,9 @@
 
 using namespace std;
 
+// **************** BINOME ****************
+// Etudiant 1: DOMMARTIN Jules:
+// Etudiant 2: JIMENEZ Pablo:
 
 /* Fonction qui affiche la matrice d'adjacence passee en paramètre */
 void afficheGraphe(vector<vector<int> > &G);
