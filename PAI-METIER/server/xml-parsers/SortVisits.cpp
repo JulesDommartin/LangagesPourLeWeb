@@ -19,6 +19,7 @@
 
 
 #include "../travel-optimisation/affiche.h"
+#include "../travel-optimisation/tsp.h"
 // Ajouter ici les includes nécessaires de la partie RO
 
 
@@ -50,11 +51,13 @@ void SortVisits::processDistanceMatrix(const char * inputFileName,
   // 2- Calcul du chemin optimal grâce à la matrice des distances en appelant les méthodes développées en RO
     
   // Ici, il faut appeler la fonction développée en RO
-        
+  std::vector<unsigned int> cheminOptimal = travelingSalesmanPerson((*distances), 0);
+
   // 3- Ré-organisation de la liste des adresse pour lui donner le bon ordre
     
   // Ici, il faut appeler la fonction développée en RO
-    
+  reordonne(adresses, cheminOptimal);
+  afficheVectorString((*adresses));
 
   // 4- Ré-organisation de la liste des adresse dans le fichier xml original (sortie dans un nouveau fichier xml)
   std::string inputStd(inputFileName);

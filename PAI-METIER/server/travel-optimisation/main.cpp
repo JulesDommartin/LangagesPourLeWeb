@@ -13,11 +13,12 @@ using namespace std;
 // Etudiant 1: DOMMARTIN Jules:
 // Etudiant 2: JIMENEZ Pablo:
 
-
+/*
 void test(vector<vector<int> > &G, vector<string> &adr)
 {
-    // A completer avec les tests de vos fonctions intermediaires que vous jugerez pertinents.
+    // tout les tests sont réalisés dans les différents fichiers et fonctions.
 }
+*/
 
 void test_kruskal(vector<vector<int> > &refsurGraphe)
 {
@@ -35,9 +36,8 @@ void test_kruskal(vector<vector<int> > &refsurGraphe)
             }
         }
 
-        cout << "Un arbre couvrant de ce graphe est: " << endl << endl;
+        cout << "Un arbre couvrant de ce graphe est: " << endl;
         afficheGraphe(T);
-        cout << endl;
 
         refsurGraphe = T;
     }
@@ -82,14 +82,15 @@ int main()
     /* Vous pouvez rajouter ici vos tests intermediaires.
      Dans la version finale que vous m'enverrez, "test" doit contenir des tests judicieusement choisis faisant démonstration de vos fonctions intermediaires.
      J'evaluerai votre programme AVEC puis SANS l'appel a test */
-    test(refsurGraphe, refsurAdresses);
+    
+    // test(refsurGraphe, refsurAdresses);
     
     /* En particulier, on fera ici un test de la fonction kruskal, et on affichera l'arbre couvrant calculé */
 
-    test_kruskal(refsurGraphe);
+    // test_kruskal(refsurGraphe);
     
     /* Appel à la fonction principale de TSP, resultat stocke dans ordreParcours */
-    vector<int> ordreParcours = travelingSalesmanPerson(refsurGraphe, 0);
+    vector<unsigned int> ordreParcours = travelingSalesmanPerson(refsurGraphe, 0);
     cout << "L'ordre de parcours de la tournée est: " << endl;
     afficheVectorInt(ordreParcours);
     

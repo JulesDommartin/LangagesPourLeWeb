@@ -1,27 +1,31 @@
-CC=g++
-CFLAGS= -Wall -Wextra -I/opt/local/include/libxml++-2.6 -I/opt/local/lib/libxml++-2.6/include -I/opt/local/include/libxml2 -I/opt/local/include/glibmm-2.4 -I/opt/local/lib/glibmm-2.4/include -I/opt/local/include/glib-2.0 -I/opt/local/lib/glib-2.0/include -I/opt/local/include -I/opt/local/include/sigc++-2.0 -I/opt/local/lib/sigc++-2.0/include  -I/usr/include/curl -I/opt/local/include/libxml++-2.6 -I/opt/local/lib/libxml++-2.6/include -I/opt/local/include/glibmm-2.4 -I/opt/local/lib/glibmm-2.4/include -I/opt/local/include/glib-2.0 -I/opt/local/lib/glib-2.0/include -I/opt/local/include/libxml2
-INCLUDEFLAGS= $(shell pkg-config --cflags libxml++-2.6) -I/usr/include/curl -I/opt/local/include/libxml++-2.6 -I/opt/local/lib/libxml++-2.6/include -I/opt/local/include/glibmm-2.4 -I/opt/local/lib/glibmm-2.4/include -I/opt/local/include/glib-2.0 -I/opt/local/lib/glib-2.0/include -I/opt/local/include/libxml2
-LDLIBS=-L/opt/local/lib  -lcurl -lxml++-2.6 -lglib-2.0 -lglibmm-2.4 -lxslt -lxml2
+# **************** BINOME ****************
+# Etudiant 1: DOMMARTIN Jules:
+# Etudiant 2: JIMENEZ Pablo:
 
-all: testTraveller
+CC = g++
+CFLAGS = -Wall -std=c++11
+EXEC = TSP
+HEADERS = $(wildcard *.h)
+OBJECTS = $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 
-testTraveller: main.o affiche.o initialisation.o kruskal.o tsp.o
-	$(CC) main.o affiche.o initialisation.o kruskal.o tsp.o -o testTraveller $(LDLIBS)
+all: $(EXEC)
 
-main.o: affiche.h initialisation.h kruskal.h tsp.h main.cpp
-	$(CC) -c $(CFLAGS) $(INCLUDEFLAGS) main.cpp -o main.o
+$(EXEC): $(OBJECTS)
+	@$(CC) -o $(EXEC) $(OBJECTS)
 
-initialisation.o: initialisation.h initialisation.cpp
-	$(CC) -c $(CFLAGS) $(INCLUDEFLAGS) initialisation.cpp -o initialisation.o
+	@echo "\nL'exécutable TSP a bien été créé : ./TSP pour le lancer.\n"
 
-kruskal.o: kruskal.h kruskal.cpp
-	$(CC) -c $(CFLAGS) $(INCLUDEFLAGS) kruskal.cpp -o kruskal.o
-
-tsp.o: tsp.h tsp.cpp
-	$(CC) -c $(CFLAGS) $(INCLUDEFLAGS) tsp.cpp -o tsp.o
+%.o: %.cpp $(HEADERS)
+	@$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
-	rm -rf *o
+	@rm -f $(OBJECTS)
 
-realclean: clean
-	rm -rf testTraveller
+	@echo "\nLes fichiers objets ont été supprimés.\n"
+
+cleanAll: clean
+	@rm -f $(EXEC)
+
+	@echo "L'exécutable a été supprimé.\n"
+
+
