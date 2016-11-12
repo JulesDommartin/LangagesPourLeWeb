@@ -5,9 +5,12 @@
  */
 package game;
 
+import com.jme3.math.Vector2f;
+import com.jme3.math.Vector3f;
 import env3d.Env;
 import env3d.EnvObject;
 import java.util.Collection;
+import org.lwjgl.input.Keyboard;
 
 /**
  *
@@ -21,6 +24,8 @@ public class Tux extends EnvObject {
     private final int KEY_DOWN;
     private final int KEY_LEFT;
     private final int KEY_RIGHT;
+    private Vector2f direction;
+    private Vector2f normaleDirection;
     
     /**
      *
@@ -41,6 +46,8 @@ public class Tux extends EnvObject {
         this.KEY_DOWN   = key_down;
         this.KEY_LEFT   = key_left;
         this.KEY_RIGHT  = key_right;
+        this.direction  = new Vector2f();
+        this.normaleDirection = new Vector2f();
         setX(x);
         setY(y);
         setZ(z);
@@ -52,25 +59,49 @@ public class Tux extends EnvObject {
     /**
      * Move the tux to an other position in function of the key pressed
      * @param currentKey: the key wich is pressed
+     * @param yaw: the angle of the camera
      */
-    public void move(int currentKey) {
+    public void move(int currentKey, double yaw) {
         double step = 1;
-        //if ((currentKey == this.KEY_UP) && this.getZ() > this.getScale() && !collision(this.env.getObjects(), 1, step)) {
-        if ((currentKey == this.KEY_UP) && this.getZ() > this.getScale()) {            
+        
+        /*if ((currentKey == this.KEY_UP) && this.getZ() > this.getScale()) {            
             this.setRotateY(180);
             this.setZ(this.getZ() - step);
-        //} else if ((currentKey == this.KEY_LEFT) && this.getX() > this.getScale() && !collision(this.env.getObjects(), 2, step)) {
         } else if ((currentKey == this.KEY_LEFT) && this.getX() > this.getScale()) {
             this.setRotateY(270);
             this.setX(this.getX() - step);
-        //} else if ((currentKey == this.KEY_RIGHT) && this.getX() < this.room.getWidth()- this.getScale() && !collision(this.env.getObjects(), 2, step)) {
         } else if ((currentKey == this.KEY_RIGHT) && this.getX() < this.room.getWidth()- this.getScale()) {
             this.setRotateY(90);
             this.setX(this.getX() + step);
-        //} else if ((currentKey == this.KEY_DOWN) && this.getZ() < this.room.getDepth()- this.getScale() && !collision(this.env.getObjects(), 1, step)) {
         } else if ((currentKey == this.KEY_DOWN) && this.getZ() < this.room.getDepth()- this.getScale()) {
             this.setRotateY(0);
             this.setZ(this.getZ() + step);
+        }*/
+        this.setRotateY(yaw);
+        this.direction.x = (float)Math.cos(Math.toRadians(yaw + 90));
+        this.direction.y = (float)Math.sin(Math.toRadians(yaw + 90));
+        this.normaleDirection.x = (float)Math.cos(Math.toRadians(yaw + 180));
+        this.normaleDirection.y = (float)Math.sin(Math.toRadians(yaw + 180));
+        System.out.println(yaw);
+        switch (currentKey) {
+            case Keyboard.KEY_UP:
+                this.setX(this.getX() + (step * this.direction.x));
+                this.setZ(this.getZ() - (step * this.direction.y));
+                break;
+            case Keyboard.KEY_DOWN:
+                this.setX(this.getX() - (step * this.direction.x));
+                this.setZ(this.getZ() + (step * this.direction.y));
+                break;
+            case Keyboard.KEY_LEFT:
+                this.setX(this.getX() + (step * this.normaleDirection.x));
+                this.setZ(this.getZ() - (step * this.normaleDirection.y));
+                break;
+            case Keyboard.KEY_RIGHT:
+                this.setX(this.getX() - (step * this.normaleDirection.x));
+                this.setZ(this.getZ() + (step * this.normaleDirection.y));
+                break;
+            default:
+                break;
         }
     }
     

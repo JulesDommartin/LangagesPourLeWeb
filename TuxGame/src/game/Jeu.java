@@ -5,6 +5,7 @@
  */
 package game;
 
+import com.jme3.math.Quaternion;
 import env3d.Env;
 import java.util.ArrayList;
 import management.Letter;
@@ -32,16 +33,15 @@ public class Jeu {
         room = new Room();
         tux1 = new Tux(20.0, 2.5, 30.0, Keyboard.KEY_Z, Keyboard.KEY_S, Keyboard.KEY_Q, Keyboard.KEY_D, room, env);
         // The second player
-        tux2 = new Tux(10.0, 2.5, 50.0, Keyboard.KEY_UP, Keyboard.KEY_DOWN, Keyboard.KEY_LEFT, Keyboard.KEY_RIGHT, room, env);
+        //tux2 = new Tux(10.0, 2.5, 50.0, Keyboard.KEY_UP, Keyboard.KEY_DOWN, Keyboard.KEY_LEFT, Keyboard.KEY_RIGHT, room, env);
         env.setRoom(room);
         env.addObject(tux1);
-        env.addObject(tux2);
+        //env.addObject(tux2);
         // Sets up the camera
-        env.setCameraXYZ(50, 75, 150);
-        env.setCameraPitch(-40);
+        env.setCameraXYZ(20, 10, 30);
+        env.setCameraPitch(0);
         // Turn off the default controls
         env.setDefaultControl(false);
-        
         createLetters();
         
         //initialize
@@ -56,8 +56,10 @@ public class Jeu {
             if (env.getKey() == 1) {
                 finished = true;
             }
-            this.tux1.move(env.getKeyDown());
-            this.tux2.move(env.getKeyDown());
+            this.tux1.move(env.getKeyDown(), this.env.getCameraYaw());
+//            this.tux2.move(env.getKeyDown());
+            env.setCameraXYZ(this.tux1.getX(), 10, this.tux1.getZ());
+            env.setCameraYaw(env.getCameraYaw() + this.env.getMouseDX()*0.5);
             // Update display
             env.advanceOneFrame();
         }
