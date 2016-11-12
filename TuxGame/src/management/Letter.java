@@ -19,7 +19,9 @@ public class Letter extends EnvObject {
     
     public Letter(char l, double x, double y, Env env) {
         this.setX(x);
-        this.setY(y);
+        this.setY(3);
+        this.setZ(y);
+        this.setScale(3);
         this.setLetter(l);
         this.env = env;
     }
