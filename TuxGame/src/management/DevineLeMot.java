@@ -10,6 +10,7 @@ import game.Room;
 import game.Tux;
 import java.util.ArrayList;
 import org.lwjgl.input.Keyboard;
+import test.TestJeu;
 
 /**
  *
@@ -26,18 +27,54 @@ public class DevineLeMot {
     private int                 nbLettresRestantes;
     private Chronometre         temps;
     private int                 viewType    = 1;
+    private int                 level;
+    private Dico                dico;
+    private MenuPrincipal       menu;
 
-    public DevineLeMot(String mot, Env env, Room room) {
-        System.out.println(mot);
+    public DevineLeMot(Env env, Room room, Dico dico) {
         this.room = room;
         this.env = env;
-        this.env.soundLoad("sounds/main.ogg");
-        this.env.soundLoop("sounds/main.ogg");
+        this.level = 0;
+        this.dico = dico;  
+        this.menu = new MenuPrincipal();
+        this.loadEnv();
+    }
+    
+    private void loadEnv() {
         this.lesLettres = new ArrayList<Letter>();
+        this.env.restart();
+        
+        System.out.println("Load sounds");
+        this.env.soundLoad("sounds/main.ogg");
+        this.env.soundLoad("sounds/plop.ogg");
+        this.env.soundLoop("sounds/main.ogg");
+        
         this.tux = new Tux(20.0, 2.5, 30.0, Keyboard.KEY_Z, Keyboard.KEY_S, Keyboard.KEY_Q, Keyboard.KEY_D, room, env);
-        this.temps = new Chronometre(10);
-        this.setLetters(mot.toLowerCase());
+        this.temps = new Chronometre(40);
         initCamera();
+        initMenu();
+    }
+    
+    private void initMenu() {
+        this.level = 0;
+        do {
+            this.level = this.menu.demanderNiveau();
+        } while (this.level <= 0 || this.level > 5);
+        this.setLetters(this.dico.getWordFromListLevel(this.level).toLowerCase());
+        this.jouer();
+    }
+    
+    private void rejouer() {
+        String rejouer;
+        do {
+            rejouer = menu.demanderRejouer();
+            System.out.println(rejouer);
+        } while (!rejouer.toLowerCase().equals("oui") && !rejouer.toLowerCase().equals("non"));
+        if (rejouer.equals("oui")) {
+            this.loadEnv();
+        } else {
+            this.env.exit();
+        }
     }
     
     private void setLetters(String mot) {
@@ -53,6 +90,7 @@ public class DevineLeMot {
                 i--;
             }
         }
+        this.nbLettresRestantes = mot.length();
     }
     
     // Check letter position : if randoms number x & z are going to make a letter
@@ -84,8 +122,21 @@ public class DevineLeMot {
         return Math.sqrt(Math.pow(tux.getX() - letter.getX(), 2) + Math.pow(tux.getZ(), letter.getZ()));
     }
     
-    private boolean collision(Tux tux, Letter letter) {
-        return false;
+    private void checkCollision() {
+        for (Letter l : this.lesLettres) {
+            if (collision(tux, l) && l.getChar() == this.lesLettres.get(this.lesLettres.size() - this.nbLettresRestantes).getChar()) {
+                this.env.removeObject(l);
+                this.env.soundPlay("sounds/plop.ogg");
+                this.nbLettresRestantes--;
+            }
+        }
+    }
+    
+    private boolean collision(Tux tux, Letter l) {
+        return (tux.getX() - Tux.SCALE < l.getX() + Letter.SCALE &&
+                tux.getX() + Tux.SCALE > l.getX() - Letter.SCALE)&&
+                (tux.getZ() - Tux.SCALE < l.getZ() + Letter.SCALE &&
+                tux.getZ() + Tux.SCALE > l.getZ() - Letter.SCALE);
     }
     
     public void jouer() {
@@ -111,6 +162,7 @@ public class DevineLeMot {
             if (this.env.getKey() == 1) {
                 this.exit = true;
             }
+            this.checkCollision();
             // Ask for user input, check if it collides and remove letters if necessary
             this.tux.move(env.getKeyDown(), this.env.getCameraYaw());
             // Update display
@@ -131,11 +183,11 @@ public class DevineLeMot {
             //System.out.println(this.env.getCameraPitch());
             // Update display
             this.env.advanceOneFrame();
-        } while (!this.exit && this.temps.remainsTime() && !this.finished);
+        } while (!this.exit && this.temps.remainsTime() && this.nbLettresRestantes > 0);
  
-        this.env.exit();
         //Post-Process: game is finished
         //we have to keep the data to save our score (chrono, temps, nbLettresRestantes) 
+        this.rejouer();
         
     }
     

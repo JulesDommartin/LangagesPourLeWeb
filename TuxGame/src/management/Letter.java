@@ -29,7 +29,6 @@ public class Letter extends EnvObject {
     
     public void setLetter(char letter) {
         if (letter == ' ') {
-            //System.out.println("Impossible de créer un cube espace");
             this.setTexture("textures/letters/cube.png");
         } else {
             this.setTexture("textures/letters/" + letter + ".png");
@@ -38,6 +37,8 @@ public class Letter extends EnvObject {
         this.letter = letter;
     }
     
-    
+    public char getChar() {
+        return this.letter;
+    }
     
 }
