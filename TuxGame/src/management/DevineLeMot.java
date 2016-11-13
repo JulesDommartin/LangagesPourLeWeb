@@ -157,7 +157,6 @@ public class DevineLeMot {
         // Add the letters
         for (Letter l : this.lesLettres) {
             this.env.addObject(l);
-            System.out.println(l);
         }
         // Start chrono
         this.temps.start();
