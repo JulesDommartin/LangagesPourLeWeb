@@ -89,20 +89,38 @@ public class Tux extends EnvObject {
         this.normaleDirection.y = (float)Math.sin(Math.toRadians(yaw + 180));
         switch (currentKey) {
             case Keyboard.KEY_Z:
-                this.setX(this.getX() + (step * this.direction.x));
-                this.setZ(this.getZ() - (step * this.direction.y));
+                if (this.getX() + (step * this.direction.x) > Tux.SCALE &&
+                    this.getX() + (step * this.direction.x) < this.room.getWidth() - Tux.SCALE)
+                    this.setX(this.getX() + (step * this.direction.x));
+                
+                if (this.getZ() - (step * this.direction.y) > Tux.SCALE &&
+                    this.getZ() - (step * this.direction.y) < this.room.getDepth() - Tux.SCALE)
+                    this.setZ(this.getZ() - (step * this.direction.y));
+                
                 break;
             case Keyboard.KEY_S:
-                this.setX(this.getX() - (step * this.direction.x));
-                this.setZ(this.getZ() + (step * this.direction.y));
+                if (this.getX() - (step * this.direction.x) > Tux.SCALE &&
+                    this.getX() - (step * this.direction.x) < this.room.getWidth() - Tux.SCALE)
+                    this.setX(this.getX() - (step * this.direction.x));
+                if (this.getZ() + (step * this.direction.y) > Tux.SCALE &&
+                    this.getZ() + (step * this.direction.y) < this.room.getDepth() - Tux.SCALE)
+                    this.setZ(this.getZ() + (step * this.direction.y));
                 break;
             case Keyboard.KEY_Q:
-                this.setX(this.getX() + (step * this.normaleDirection.x));
-                this.setZ(this.getZ() - (step * this.normaleDirection.y));
+                if (this.getX() + (step * this.normaleDirection.x) > Tux.SCALE &&
+                    this.getX() + (step * this.normaleDirection.x) < this.room.getWidth() - Tux.SCALE)
+                    this.setX(this.getX() + (step * this.normaleDirection.x));
+                if (this.getZ() - (step * this.normaleDirection.y) > Tux.SCALE &&
+                    this.getZ() - (step * this.normaleDirection.y) < this.room.getDepth() - Tux.SCALE)
+                    this.setZ(this.getZ() - (step * this.normaleDirection.y));
                 break;
             case Keyboard.KEY_D:
-                this.setX(this.getX() - (step * this.normaleDirection.x));
-                this.setZ(this.getZ() + (step * this.normaleDirection.y));
+                if (this.getX() - (step * this.normaleDirection.x) > Tux.SCALE &&
+                    this.getX() - (step * this.normaleDirection.x) < this.room.getWidth() - Tux.SCALE)
+                    this.setX(this.getX() - (step * this.normaleDirection.x));
+                if (this.getZ() + (step * this.normaleDirection.y) > Tux.SCALE &&
+                    this.getZ() + (step * this.normaleDirection.y) < this.room.getDepth() - Tux.SCALE)
+                    this.setZ(this.getZ() + (step * this.normaleDirection.y));
                 break;
             default:
                 break;

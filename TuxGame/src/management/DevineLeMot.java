@@ -68,7 +68,6 @@ public class DevineLeMot {
         String rejouer;
         do {
             rejouer = menu.demanderRejouer();
-            System.out.println(rejouer);
         } while (!rejouer.toLowerCase().equals("oui") && !rejouer.toLowerCase().equals("non"));
         if (rejouer.equals("oui")) {
             this.loadEnv();
