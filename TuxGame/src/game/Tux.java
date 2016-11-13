@@ -26,6 +26,7 @@ public class Tux extends EnvObject {
     private final int KEY_RIGHT;
     private Vector2f direction;
     private Vector2f normaleDirection;
+    public static final int SCALE = 3;
     
     /**
      *
@@ -51,7 +52,7 @@ public class Tux extends EnvObject {
         setX(x);
         setY(y);
         setZ(z);
-        setScale(3);
+        setScale(this.SCALE);
         setTexture("models/boxDude/ninja.png");
         setModel("models/boxDude/box-dude.obj");
     }
@@ -63,7 +64,7 @@ public class Tux extends EnvObject {
      */
     public void move(int currentKey, double yaw) {
         double step = 1;
-        
+        // FIRST VERSION OF DEPLACEMENT
         /*if ((currentKey == this.KEY_UP) && this.getZ() > this.getScale()) {            
             this.setRotateY(180);
             this.setZ(this.getZ() - step);
@@ -77,26 +78,29 @@ public class Tux extends EnvObject {
             this.setRotateY(0);
             this.setZ(this.getZ() + step);
         }*/
-        this.setRotateY(yaw);
+        
+        // SECOND VERSION OF DEPLACEMENT
+        this.setRotateY(yaw + 180);
+        // We add 90 degrees to fit with the game axes
         this.direction.x = (float)Math.cos(Math.toRadians(yaw + 90));
         this.direction.y = (float)Math.sin(Math.toRadians(yaw + 90));
+        // We add 180 degrees to fit with the game axes
         this.normaleDirection.x = (float)Math.cos(Math.toRadians(yaw + 180));
         this.normaleDirection.y = (float)Math.sin(Math.toRadians(yaw + 180));
-        System.out.println(yaw);
         switch (currentKey) {
-            case Keyboard.KEY_UP:
+            case Keyboard.KEY_Z:
                 this.setX(this.getX() + (step * this.direction.x));
                 this.setZ(this.getZ() - (step * this.direction.y));
                 break;
-            case Keyboard.KEY_DOWN:
+            case Keyboard.KEY_S:
                 this.setX(this.getX() - (step * this.direction.x));
                 this.setZ(this.getZ() + (step * this.direction.y));
                 break;
-            case Keyboard.KEY_LEFT:
+            case Keyboard.KEY_Q:
                 this.setX(this.getX() + (step * this.normaleDirection.x));
                 this.setZ(this.getZ() - (step * this.normaleDirection.y));
                 break;
-            case Keyboard.KEY_RIGHT:
+            case Keyboard.KEY_D:
                 this.setX(this.getX() - (step * this.normaleDirection.x));
                 this.setZ(this.getZ() + (step * this.normaleDirection.y));
                 break;
@@ -138,6 +142,10 @@ public class Tux extends EnvObject {
             }
         }
         return true;
+    }
+    
+    public Vector2f getDirection() {
+        return this.direction;
     }
     
 }

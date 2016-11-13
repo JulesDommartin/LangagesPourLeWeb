@@ -38,7 +38,7 @@ public class Jeu {
         env.addObject(tux1);
         //env.addObject(tux2);
         // Sets up the camera
-        env.setCameraXYZ(20, 10, 30);
+        env.setCameraXYZ(20, 30, 75);
         env.setCameraPitch(0);
         // Turn off the default controls
         env.setDefaultControl(false);

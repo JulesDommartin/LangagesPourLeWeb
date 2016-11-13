@@ -14,14 +14,15 @@ import env3d.EnvObject;
  */
 public class Letter extends EnvObject {
     
-    private char        letter;
-    private final Env   env;
+    private                 char  letter;
+    private final           Env   env;
+    public  static final    int   SCALE = 3;
     
     public Letter(char l, double x, double y, Env env) {
         this.setX(x);
         this.setY(3);
         this.setZ(y);
-        this.setScale(3);
+        this.setScale(this.SCALE);
         this.setLetter(l);
         this.env = env;
     }
