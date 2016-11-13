@@ -183,6 +183,9 @@ public class DevineLeMot {
             //System.out.println(this.env.getCameraPitch());
             // Update display
             this.env.advanceOneFrame();
+            if (!this.temps.remainsTime()) {
+                System.out.println("Le temps est épuisé");
+            }
         } while (!this.exit && this.temps.remainsTime() && this.nbLettresRestantes > 0);
  
         //Post-Process: game is finished
