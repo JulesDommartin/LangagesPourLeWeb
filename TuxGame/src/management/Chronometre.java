@@ -57,5 +57,9 @@ public class Chronometre {
         timeSpent = (int) ((current - begin)/1000.0);
         return (limite > timeSpent);
     }
+    
+    public int remainingTime() {
+        return limite - (int)((System.currentTimeMillis() - begin) / 1000.0);
+    }
      
 }

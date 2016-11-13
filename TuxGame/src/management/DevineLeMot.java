@@ -47,7 +47,6 @@ public class DevineLeMot {
         System.out.println("Load sounds");
         this.env.soundLoad("sounds/main.ogg");
         this.env.soundLoad("sounds/plop.ogg");
-        this.env.soundLoop("sounds/main.ogg");
         
         this.tux = new Tux(20.0, 2.5, 30.0, Keyboard.KEY_Z, Keyboard.KEY_S, Keyboard.KEY_Q, Keyboard.KEY_D, room, env);
         this.temps = new Chronometre(40);
@@ -77,7 +76,6 @@ public class DevineLeMot {
     }
     
     private void setLetters(String mot) {
-        System.out.println(mot);
         for (int i = 0; i < mot.length(); i++) {
             double x = (Math.random() * (this.room.getWidth() - Letter.SCALE)) + Letter.SCALE;
             double z = (Math.random() * (this.room.getDepth() - Letter.SCALE)) + Letter.SCALE;
@@ -138,9 +136,24 @@ public class DevineLeMot {
                 tux.getZ() + Tux.SCALE > l.getZ() - Letter.SCALE);
     }
     
+    private String getStringMotToDisplay() {
+        String display = "";
+        for (int i = 0; i < this.lesLettres.size() - this.nbLettresRestantes; i++) {
+            display += this.lesLettres.get(i).getChar() + " ";
+        }
+        for (int i = this.lesLettres.size() - nbLettresRestantes; i < this.lesLettres.size(); i++) {
+            display += "_ ";
+        }
+        return display.toUpperCase();
+    }
+    
     public void jouer() {
+        // Play the sound in Loop
+        this.env.soundLoop("sounds/main.ogg");
         // Insert Tux
         this.env.addObject(this.tux);
+        this.env.setDisplayStr("Change camera : X", 20, 20);
+        this.env.setDisplayStr("Restart or quit : ESC", 20, 45);
         // Add the letters
         for (Letter l : this.lesLettres) {
             this.env.addObject(l);
@@ -185,8 +198,11 @@ public class DevineLeMot {
             if (!this.temps.remainsTime()) {
                 System.out.println("Le temps est épuisé");
             }
+            this.env.setDisplayStr(this.getStringMotToDisplay(), 20, 450);
+            this.env.setDisplayStr("Remaining time : " + String.valueOf(this.temps.remainingTime()), 400, 450);
         } while (!this.exit && this.temps.remainsTime() && this.nbLettresRestantes > 0);
- 
+        this.env.setDisplayStr("VOUS AVEZ GAGNÉ", 190, 280, 2, 50, 200, 120, 1);
+        this.env.advanceOneFrame();
         //Post-Process: game is finished
         //we have to keep the data to save our score (chrono, temps, nbLettresRestantes) 
         this.rejouer();
