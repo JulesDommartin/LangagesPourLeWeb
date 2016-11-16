@@ -20,10 +20,6 @@ public class Tux extends EnvObject {
     
     private final Room room;      // Room where the tux is moving
     private final Env env;        // Environment
-    private final int KEY_UP;
-    private final int KEY_DOWN;
-    private final int KEY_LEFT;
-    private final int KEY_RIGHT;
     private Vector2f direction;
     private Vector2f normaleDirection;
     public static final int SCALE = 3;
@@ -33,28 +29,20 @@ public class Tux extends EnvObject {
      * @param x: x position
      * @param y: y position
      * @param z: z position
-     * @param key_up: key to press to go up
-     * @param key_down: key to press to go down
-     * @param key_left: key to press to go left
-     * @param key_right: key to press to go right
      * @param room: room where the tux is
      * @param env: environment where the room and tux are
      */
-    public Tux(double x, double y, double z, int key_up, int key_down, int key_left, int key_right, Room room, Env env) {
+    public Tux(double x, double y, double z, Room room, Env env) {
         this.room       = room;
         this.env        = env;
-        this.KEY_UP     = key_up;
-        this.KEY_DOWN   = key_down;
-        this.KEY_LEFT   = key_left;
-        this.KEY_RIGHT  = key_right;
         this.direction  = new Vector2f();
         this.normaleDirection = new Vector2f();
         setX(x);
         setY(y);
         setZ(z);
         setScale(this.SCALE);
-        setTexture("models/boxDude/ninja.png");
-        setModel("models/boxDude/box-dude.obj");
+        setTexture("models/tux/tux.png");
+        setModel("models/tux/tux.obj");
     }
     
     /**
@@ -89,16 +77,17 @@ public class Tux extends EnvObject {
         this.normaleDirection.y = (float)Math.sin(Math.toRadians(yaw + 180));
         switch (currentKey) {
             case Keyboard.KEY_Z:
+                this.setRotateX(0);
                 if (this.getX() + (step * this.direction.x) > Tux.SCALE &&
                     this.getX() + (step * this.direction.x) < this.room.getWidth() - Tux.SCALE)
-                    this.setX(this.getX() + (step * this.direction.x));
-                
+                    this.setX(this.getX() + (step * this.direction.x));           
                 if (this.getZ() - (step * this.direction.y) > Tux.SCALE &&
                     this.getZ() - (step * this.direction.y) < this.room.getDepth() - Tux.SCALE)
                     this.setZ(this.getZ() - (step * this.direction.y));
                 
                 break;
             case Keyboard.KEY_S:
+                this.setRotateX(0);                
                 if (this.getX() - (step * this.direction.x) > Tux.SCALE &&
                     this.getX() - (step * this.direction.x) < this.room.getWidth() - Tux.SCALE)
                     this.setX(this.getX() - (step * this.direction.x));
@@ -107,6 +96,7 @@ public class Tux extends EnvObject {
                     this.setZ(this.getZ() + (step * this.direction.y));
                 break;
             case Keyboard.KEY_Q:
+                this.setRotateX(0);
                 if (this.getX() + (step * this.normaleDirection.x) > Tux.SCALE &&
                     this.getX() + (step * this.normaleDirection.x) < this.room.getWidth() - Tux.SCALE)
                     this.setX(this.getX() + (step * this.normaleDirection.x));
@@ -115,6 +105,7 @@ public class Tux extends EnvObject {
                     this.setZ(this.getZ() - (step * this.normaleDirection.y));
                 break;
             case Keyboard.KEY_D:
+                this.setRotateX(0);
                 if (this.getX() - (step * this.normaleDirection.x) > Tux.SCALE &&
                     this.getX() - (step * this.normaleDirection.x) < this.room.getWidth() - Tux.SCALE)
                     this.setX(this.getX() - (step * this.normaleDirection.x));
@@ -122,44 +113,21 @@ public class Tux extends EnvObject {
                     this.getZ() + (step * this.normaleDirection.y) < this.room.getDepth() - Tux.SCALE)
                     this.setZ(this.getZ() + (step * this.normaleDirection.y));
                 break;
+            case Keyboard.KEY_SPACE:
+                step = 2;
+                this.setRotateX(this.getRotateX() + 10);
+                if (this.getX() + (step * this.direction.x) > Tux.SCALE
+                        && this.getX() + (step * this.direction.x) < this.room.getWidth() - Tux.SCALE) {
+                    this.setX(this.getX() + (step * this.direction.x));
+                }
+                if (this.getZ() - (step * this.direction.y) > Tux.SCALE
+                        && this.getZ() - (step * this.direction.y) < this.room.getDepth() - Tux.SCALE) {
+                    this.setZ(this.getZ() - (step * this.direction.y));
+                }
+                break;
             default:
                 break;
         }
-    }
-    
-    // NE MARCHE PAS, A REVOIR
-    private boolean collision(Collection<EnvObject> lesObjets, int direction, double step) {
-        for (EnvObject o : lesObjets) {
-            switch(direction) {
-                case 1: // UP
-                    if (this.getZ() - step <= o.getZ() + step) {
-                        return false;
-                    } else {
-                        return true;
-                    }
-                case 2: // LEFT + RIGHT
-                    if (this.getX() - step <= o.getX() + step) {
-                        return false;
-                    } else {
-                        return true;
-                    }
-                case 3: // RIGHT
-                    if (this.getX() + step <= o.getX() - step) {
-                        return false;
-                    } else {
-                        return true;
-                    }
-                case 4: // DOWN 
-                    if (this.getY() - step <= o.getY() - step) {
-                        return false;
-                    } else {
-                        return true;
-                    }
-                default:
-                    return true;
-            }
-        }
-        return true;
     }
     
     public Vector2f getDirection() {
