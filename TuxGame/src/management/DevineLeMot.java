@@ -6,6 +6,7 @@
 package management;
 
 import env3d.Env;
+import game.Profile;
 import game.Room;
 import game.Tux;
 import java.awt.Toolkit;
@@ -31,6 +32,8 @@ public class DevineLeMot {
     private int                 level;
     private Dico                dico;
     private MenuPrincipal       menu;
+    private Profile             profile;    
+
 
     public DevineLeMot(Env env, Room room, Dico dico) {
         this.room = room;
@@ -39,6 +42,21 @@ public class DevineLeMot {
         this.dico = dico;  
         this.menu = new MenuPrincipal();
         this.loadEnv();
+                
+        // Initialize the menu of the level choice
+        initMenu();
+    }
+    
+    public DevineLeMot(Env env, Room room, Dico dico, String filename) {
+        this.room = room;
+        this.env = env;
+        this.dico = dico;
+        this.menu = new MenuPrincipal();
+        this.profile = new Profile(filename);
+        this.level = this.profile.getLastLevel();
+        this.loadEnv();
+        this.setLetters(this.dico.getWordFromListLevel(this.level).toLowerCase());
+        this.jouer();
     }
     
     // Load the differents parts of the environment
@@ -68,9 +86,6 @@ public class DevineLeMot {
         
         // Initialize the camera settings 
         initCamera();
-        
-        // Initialize the menu of the level choice
-        initMenu();
     }
     
     // Initialise the menu, ask for a level as a int
@@ -83,7 +98,7 @@ public class DevineLeMot {
         this.setLetters(this.dico.getWordFromListLevel(this.level).toLowerCase());
         this.jouer();
     }
-    
+        
     // Ask the user if he wants to play again
     private void rejouer() {
         String rejouer;
@@ -94,7 +109,8 @@ public class DevineLeMot {
         // If he says "yes" we call the loadEnv() method again
         // else, we quit the game
         if (rejouer.equals("oui")) {
-            this.loadEnv();
+            this.loadEnv();               
+            initMenu();
         } else {
             this.env.exit();
         }
