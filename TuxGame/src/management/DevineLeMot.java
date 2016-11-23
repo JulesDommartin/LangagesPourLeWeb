@@ -230,6 +230,8 @@ public class DevineLeMot {
             if (this.env.getKey() == 1) {
                 this.exit = true;
             }
+            
+            this.env.setCameraYaw(env.getCameraYaw() - this.env.getMouseDX() * 0.8);
             this.checkCollision();
             // Ask for user input, check if it collides and remove letters if necessary
             this.tux.move(env.getKeyDown(), this.env.getCameraYaw());
@@ -250,7 +252,6 @@ public class DevineLeMot {
                         this.tux.getZ()
                 );
             }
-            this.env.setCameraYaw(env.getCameraYaw() - this.env.getMouseDX() * 0.8);
             //System.out.println(this.env.getCameraPitch());
             // Update display
             this.env.advanceOneFrame();
