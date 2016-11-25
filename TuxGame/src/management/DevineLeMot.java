@@ -5,6 +5,7 @@
  */
 package management;
 
+import com.jme3.audio.Filter;
 import env3d.Env;
 import game.Room;
 import game.Tux;
@@ -190,9 +191,12 @@ public class DevineLeMot {
         this.env.soundLoop("sounds/main.ogg");
         // Insert Tux
         this.env.addObject(this.tux);
+        
+        // Display game infos
         this.env.setDisplayStr("Change camera : X", 20, 20);
         this.env.setDisplayStr("Restart or quit : ESC", 20, 45);
-        // Add the letters
+
+        // Add the letters 
         for (Letter l : this.lesLettres) {
             this.env.addObject(l);
         }
