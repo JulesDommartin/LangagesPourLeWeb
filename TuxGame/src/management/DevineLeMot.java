@@ -6,13 +6,20 @@
 package management;
 
 import env3d.Env;
+import game.Partie;
 import game.Profile;
 import game.Room;
 import game.Tux;
-import java.awt.Toolkit;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 import org.lwjgl.input.Keyboard;
-import test.TestJeu;
 
 /**
  *
@@ -33,9 +40,10 @@ public class DevineLeMot {
     private Dico                dico;
     private MenuPrincipal       menu;
     private Profile             profile;    
+    private String              mot;
 
 
-    public DevineLeMot(Env env, Room room, Dico dico) {
+    public DevineLeMot(Env env, Room room, Dico dico) throws IOException, ParserConfigurationException {
         this.room = room;
         this.env = env;
         this.level = 0;
@@ -47,7 +55,7 @@ public class DevineLeMot {
         initMenu();
     }
     
-    public DevineLeMot(Env env, Room room, Dico dico, String filename) {
+    public DevineLeMot(Env env, Room room, Dico dico, String filename) throws IOException, ParserConfigurationException {
         this.room = room;
         this.env = env;
         this.dico = dico;
@@ -55,7 +63,8 @@ public class DevineLeMot {
         this.profile = new Profile(filename);
         this.level = this.profile.getLastLevel();
         this.loadEnv();
-        this.setLetters(this.dico.getWordFromListLevel(this.level).toLowerCase());
+        this.mot = this.dico.getWordFromListLevel(this.level).toLowerCase();
+        this.setLetters(this.mot);
         this.jouer();
     }
     
@@ -67,10 +76,11 @@ public class DevineLeMot {
         this.env.restart();
         
         // Loading different sounds from the "sounds" folder in order to use it later
-        System.out.println("Load sounds");
         this.env.soundLoad("sounds/main.ogg");
         this.env.soundLoad("sounds/end.ogg");
         this.env.soundLoad("sounds/plop.ogg");
+        this.env.soundLoad("sounds/bad.ogg");
+        System.out.println("Sounds loaded");
         
         this.env.setDefaultControl(false);
         
@@ -78,7 +88,7 @@ public class DevineLeMot {
         this.tux = new Tux(20.0, 2.5, 30.0, room, env);
         
         // Initialize the timer with 40 seconds
-        this.temps = new Chronometre(40);
+        this.temps = new Chronometre(20);
         
         // In order to display a string at this bounds later
         // and to erase this string by passing "null" as an argument
@@ -89,18 +99,19 @@ public class DevineLeMot {
     }
     
     // Initialise the menu, ask for a level as a int
-    private void initMenu() {
+    private void initMenu() throws IOException, ParserConfigurationException {
         this.level = 0;
         // While 
         do {
             this.level = this.menu.demanderNiveau();
         } while (this.level <= 0 || this.level > 5);
-        this.setLetters(this.dico.getWordFromListLevel(this.level).toLowerCase());
+        this.mot = this.dico.getWordFromListLevel(this.level).toLowerCase();
+        this.setLetters(this.mot);
         this.jouer();
     }
         
     // Ask the user if he wants to play again
-    private void rejouer() {
+    private void rejouer() throws IOException, ParserConfigurationException {
         String rejouer;
         do {
             rejouer = menu.demanderRejouer();
@@ -173,10 +184,14 @@ public class DevineLeMot {
     // For each letter, check if there is a collision between this letter and the tux
     private void checkCollision() {
         for (Letter l : this.lesLettres) {
-            if (collision(tux, l) && l.getChar() == this.lesLettres.get(this.lesLettres.size() - this.nbLettresRestantes).getChar()) {
-                this.env.removeObject(l);
-                this.env.soundPlay("sounds/plop.ogg");
-                this.nbLettresRestantes--;
+            if (collision(tux, l)) {
+                if (l.getChar() == this.lesLettres.get(this.lesLettres.size() - this.nbLettresRestantes).getChar()) {
+                    this.env.removeObject(l);
+                    this.env.soundPlay("sounds/plop.ogg");
+                    this.nbLettresRestantes--;   
+                } else {
+                    this.env.soundPlay("sounds/bad.ogg");
+                }
             }
         }
     }
@@ -201,7 +216,7 @@ public class DevineLeMot {
         return display.toUpperCase();
     }
     
-    public void jouer() {
+    public void jouer() throws IOException, ParserConfigurationException {
         // Play the sound in Loop
         this.env.soundLoop("sounds/main.ogg");
         // Insert Tux
@@ -268,11 +283,26 @@ public class DevineLeMot {
         } else {
             this.env.setDisplayStr("VOUS AVEZ GAGNÉ", 190, 280, 2, 50, 200, 120, 1);
             this.env.soundStop("sounds/main.ogg");
+            this.tux.setTexture("models/tux/tux_cena.png");
             this.env.soundPlay("sounds/end.ogg");
+            this.tux.setRotateX(0);
+            this.tux.setRotateY(this.tux.getRotateY() + 180);
         }
         this.env.advanceOneFrame();
         //Post-Process: game is finished
-        //we have to keep the data to save our score (chrono, temps, nbLettresRestantes) 
+        //we have to keep the data to save our score (chrono, temps, nbLettresRestantes)
+        Date date = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String date_string = dateFormat.format(date);
+        Partie p = new Partie(date_string, this.mot, this.level);
+        p.setTemps(this.temps.remainingTime());
+        p.setTrouve(this.nbLettresRestantes);
+        this.profile.ajouterPartie(p);
+        try {
+            this.profile.save("profile2.xml");
+        } catch (TransformerException ex) {
+            Logger.getLogger(DevineLeMot.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.rejouer();
         
     }

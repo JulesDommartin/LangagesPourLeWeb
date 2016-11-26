@@ -12,6 +12,15 @@ import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -50,15 +59,13 @@ public class Profile {
             this.parties        = new ArrayList<Partie>();
             
             NodeList lesGames   = doc.getElementsByTagName("game");
-            System.out.println("Profile.java - Ligne 52 : " + lesGames.getLength());
             for (int i = 0; i < lesGames.getLength(); i++) {
                 System.out.println("On ajoute une partie");
                 this.ajouterPartie(new Partie((Element) lesGames.item(i)));
             }
-            System.out.println("Taille parties : " + this.parties.size());
             
         } catch(Exception e) {
-            System.out.println("Erreur : " + e);
+            System.out.println(e.toString());
         }
     }
     
@@ -68,7 +75,6 @@ public class Profile {
     
     public int getLastLevel() {
         int lastLevel = 0;
-        System.out.println(this.parties.size());
         // If there is one game with this profile, we get the level of the last played game
         if (this.parties.size() > 0) {
             lastLevel = this.parties.get(this.parties.size() - 1).getNiveau();
@@ -99,7 +105,7 @@ public class Profile {
         Document doc        = docBuilder.newDocument();
         Element profile     = doc.createElement("profile");
         
-        Element name        = doc.createElement("nom");
+        Element name        = doc.createElement("name");
         Element avatar      = doc.createElement("avatar");
         Element birthday    = doc.createElement("birthday");
         Element games       = doc.createElement("games");
@@ -151,7 +157,7 @@ public class Profile {
         return date;
     }
     
-    public void save(String filename) throws IOException, ParserConfigurationException {
+    public void save(String filename) throws IOException, TransformerConfigurationException, ParserConfigurationException, TransformerException {
         
         Document profile = this.getXmlDocument();
         
@@ -162,8 +168,12 @@ public class Profile {
         // If the folder doesn't exist, we create it
         folder.mkdir();
         
-        FileWriter fw = new FileWriter(f);
-        fw.write(this.getStringFromDoc(profile));
+        TransformerFactory transFact    = TransformerFactory.newInstance();
+        Transformer transformer         = transFact.newTransformer();
+        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+        Source src                      = new DOMSource(profile);
+        Result dest                     = new StreamResult(f);
+        transformer.transform(src, dest);
     }
     
 }

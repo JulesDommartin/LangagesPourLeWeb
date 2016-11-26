@@ -33,7 +33,6 @@ public class Dico {
     }
     
     public String getWordFromListLevel(int level) {
-        System.out.println("Dico.java - Ligne 36 : " + level);
         if (listLevels[level - 1].size() == 0) {
             return null;
         }

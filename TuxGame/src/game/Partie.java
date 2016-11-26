@@ -35,10 +35,10 @@ public class Partie {
         this.mot    = domPartie.getElementsByTagName("word").item(0).getTextContent();
         this.niveau = Integer.parseInt(domPartie.getElementsByTagName("word").item(0).getAttributes().item(0).getTextContent());
         if (domPartie.getElementsByTagName("time").getLength() == 0) {
-            this.trouve = Integer.parseInt(domPartie.getAttribute("found"));
+            this.trouve = Integer.parseInt(domPartie.getAttribute("found").replace("%",""));
             this.temps = 0;
         } else {
-            this.temps  = Integer.parseInt(domPartie.getElementsByTagName("time").item(1).getTextContent());
+            this.temps  = Integer.parseInt(domPartie.getElementsByTagName("time").item(0).getTextContent());
             this.trouve = 100;
         }
     }
@@ -47,7 +47,7 @@ public class Partie {
         Element game = doc.createElement("game");
         game.setAttribute("date", this.date);
         if (this.trouve < 100) {
-            game.setAttribute("found", Integer.toString(this.trouve));
+            game.setAttribute("found", Integer.toString(this.trouve) + "%");
         } else {
             Element time = doc.createElement("time");
             time.setTextContent(Integer.toString(this.temps));
@@ -61,7 +61,12 @@ public class Partie {
     }
     
     public void setTrouve(int nbLettresRestantes) {
-        this.trouve = (int)(Math.floor(this.mot.length()/(this.mot.length() - nbLettresRestantes)) * 100);
+        System.out.println(nbLettresRestantes);
+        if (nbLettresRestantes == 0) {
+            this.trouve = 100;
+        } else {
+            this.trouve = (int) Math.floor(((this.mot.length() * 1.0 - nbLettresRestantes * 1.0) / this.mot.length() * 1.0) * 100.0);
+        }
     }
     
     public void setTemps(int temps) {
