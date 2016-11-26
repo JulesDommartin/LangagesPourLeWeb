@@ -40,6 +40,32 @@ public class Dico {
     }
     
     public void addWordToDico(int level, String word) {
+        // We replace all the special caracteres by a known one
+        word = word .replace("à", "a")
+                    .replace("á", "a")
+                    .replace("â", "a")
+                    .replace("ä", "a")
+                    .replace("å", "a")
+                    .replace("ã", "a")
+                    .replace("é", "e")
+                    .replace("è", "e")
+                    .replace("ë", "e")
+                    .replace("ê", "e")
+                    .replace("î", "i")
+                    .replace("ï", "i")
+                    .replace("í", "i")
+                    .replace("ì", "i")
+                    .replace("ò", "o")
+                    .replace("ó", "o")
+                    .replace("ô", "o")
+                    .replace("õ", "o")
+                    .replace("ö", "o")
+                    .replace("ù", "u")
+                    .replace("ú", "u")
+                    .replace("û", "u")
+                    .replace("ü", "u")
+                    .replace("ý", "y")
+                    .replace("ÿ", "y");
         this.listLevels[level - 1].add(word);
     }
    
