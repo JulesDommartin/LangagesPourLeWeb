@@ -80,6 +80,8 @@ public class DevineLeMot {
         this.env.soundLoad("sounds/end.ogg");
         this.env.soundLoad("sounds/plop.ogg");
         this.env.soundLoad("sounds/bad.ogg");
+        this.env.soundLoad("sounds/loose.ogg");
+        this.env.soundLoad("sounds/warning.ogg");
         System.out.println("Sounds loaded");
         
         this.env.setDefaultControl(false);
@@ -189,7 +191,7 @@ public class DevineLeMot {
                     this.env.removeObject(l);
                     this.env.soundPlay("sounds/plop.ogg");
                     this.nbLettresRestantes--;   
-                } else {
+                } else if (this.env.getObjects().contains(l)) {
                     this.env.soundPlay("sounds/bad.ogg");
                 }
             }
@@ -274,15 +276,22 @@ public class DevineLeMot {
                 System.out.println("Le temps est épuisé");
             }
             this.env.setDisplayStr(this.getStringMotToDisplay(), 20, 450);
-            this.env.setDisplayStr("Remaining time : " + String.valueOf(this.temps.remainingTime()), 400, 450);
+            if (this.temps.remainingTime() <= 5) {
+                this.env.soundLoop("sounds/warning.ogg");
+                this.env.setDisplayStr("Remaining time : " + String.valueOf(this.temps.remainingTime()), 400, 450, 2, 255, 50, 50, 1);
+            } else {
+                this.env.setDisplayStr("Remaining time : " + String.valueOf(this.temps.remainingTime()), 400, 450);
+            }
         } while (!this.exit && this.temps.remainsTime() && this.nbLettresRestantes > 0);
+        this.env.soundStop("sounds/warning.ogg");
+        this.env.soundStop("sounds/main.ogg");
         if (this.exit) {
             this.env.setDisplayStr("VOUS AVEZ QUITTE", 190, 280, 2, 50, 200, 120, 1);
         } else if (!this.temps.remainsTime()) {
             this.env.setDisplayStr("TEMPS ECOULE", 190, 280, 2, 50, 200, 120, 1);
+            this.env.soundPlay("sounds/loose.ogg");
         } else {
             this.env.setDisplayStr("VOUS AVEZ GAGNÉ", 190, 280, 2, 50, 200, 120, 1);
-            this.env.soundStop("sounds/main.ogg");
             this.tux.setTexture("models/tux/tux_cena.png");
             this.env.soundPlay("sounds/end.ogg");
             this.tux.setRotateX(0);
@@ -291,17 +300,21 @@ public class DevineLeMot {
         this.env.advanceOneFrame();
         //Post-Process: game is finished
         //we have to keep the data to save our score (chrono, temps, nbLettresRestantes)
-        Date date = new Date();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String date_string = dateFormat.format(date);
-        Partie p = new Partie(date_string, this.mot, this.level);
-        p.setTemps(this.temps.remainingTime());
-        p.setTrouve(this.nbLettresRestantes);
-        this.profile.ajouterPartie(p);
-        try {
-            this.profile.save("profile2.xml");
-        } catch (TransformerException ex) {
-            Logger.getLogger(DevineLeMot.class.getName()).log(Level.SEVERE, null, ex);
+        
+        // We don't want to keep data from a leaved game
+        if (!this.exit) {
+            Date date = new Date();
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String date_string = dateFormat.format(date);
+            Partie p = new Partie(date_string, this.mot, this.level);
+            p.setTemps(this.temps.remainingTime());
+            p.setTrouve(this.nbLettresRestantes);
+            this.profile.ajouterPartie(p);
+            try {
+                this.profile.save("profile2.xml");
+            } catch (TransformerException ex) {
+                Logger.getLogger(DevineLeMot.class.getName()).log(Level.SEVERE, null, ex);
+            }   
         }
         this.rejouer();
         

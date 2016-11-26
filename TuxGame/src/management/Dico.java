@@ -5,7 +5,17 @@
  */
 package management;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -20,8 +30,34 @@ public class Dico {
     public Dico(String pathToDicoFile) {
         this.pathToDicoFile = pathToDicoFile;
         this.createLevelArrays();
+        this.parseDico();
     }
 
+    private void parseDico() {
+        try {
+            // Parse the document
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder p   = dbFactory.newDocumentBuilder();
+            Document doc        = p.parse(this.pathToDicoFile);
+            
+            NodeList lesMots   = doc.getElementsByTagName("mot");
+            
+            for (int i = 0; i < lesMots.getLength(); i++ ) {
+                int level   = Integer.parseInt(lesMots.item(i).getAttributes().item(0).getTextContent());
+                String mot  = lesMots.item(i).getChildNodes().item(1).getTextContent();
+                this.addWordToDico(level, mot);
+            }
+
+            
+        } catch (ParserConfigurationException ex) {
+            Logger.getLogger(Dico.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SAXException ex) {
+            Logger.getLogger(Dico.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Dico.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public String getPathToDicoFile() {
         return pathToDicoFile;
     }

@@ -7,7 +7,6 @@ package game;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 
 
 /**
@@ -61,7 +60,6 @@ public class Partie {
     }
     
     public void setTrouve(int nbLettresRestantes) {
-        System.out.println(nbLettresRestantes);
         if (nbLettresRestantes == 0) {
             this.trouve = 100;
         } else {

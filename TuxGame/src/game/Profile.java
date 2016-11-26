@@ -60,7 +60,6 @@ public class Profile {
             
             NodeList lesGames   = doc.getElementsByTagName("game");
             for (int i = 0; i < lesGames.getLength(); i++) {
-                System.out.println("On ajoute une partie");
                 this.ajouterPartie(new Partie((Element) lesGames.item(i)));
             }
             

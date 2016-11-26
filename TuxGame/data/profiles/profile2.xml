@@ -15,8 +15,31 @@
 <time>20</time>
 <word level="2">indice</word>
 </game>
-<game date="2016-11-26" found="40%">
-<word level="2">avion</word>
+<game date="2016-11-26">
+<time>9</time>
+<word level="2">soeur</word>
+</game>
+<game date="2016-11-26" found="20%">
+<word level="2">frere</word>
+</game>
+<game date="2016-11-26">
+<time>3</time>
+<word level="2">linux</word>
+</game>
+<game date="2016-11-26">
+<time>2</time>
+<word level="2">idiot</word>
+</game>
+<game date="2016-11-26">
+<time>3</time>
+<word level="2">poche</word>
+</game>
+<game date="2016-11-26" found="55%">
+<word level="5">kangourou</word>
+</game>
+<game date="2016-11-26">
+<time>13</time>
+<word level="1">gens</word>
 </game>
 </games>
 </profile>
