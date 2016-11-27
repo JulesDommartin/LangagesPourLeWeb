@@ -21,6 +21,7 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import management.LectureClavier;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -45,26 +46,36 @@ public class Profile {
         this.parties        = new ArrayList<Partie>();
     }
     
-    public Profile(String filename) {
+    public Profile(String profileName) {
         try {
+            this.parties = new ArrayList<Partie>();
+            File f = new File("data/profiles/" + profileName + ".xml");
             
-            // Parse the document
-            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder p   = dbFactory.newDocumentBuilder();
-            Document doc        = p.parse(filename);
-            
-            this.nom            = doc.getElementsByTagName("name")      .item(0).getTextContent();
-            this.dateNaissance  = this.xmlDateToProfileDate(doc.getElementsByTagName("birthday")  .item(0).getTextContent());
-            this.avatar         = doc.getElementsByTagName("avatar")    .item(0).getTextContent();
-            this.parties        = new ArrayList<Partie>();
-            
-            NodeList lesGames   = doc.getElementsByTagName("game");
-            for (int i = 0; i < lesGames.getLength(); i++) {
-                this.ajouterPartie(new Partie((Element) lesGames.item(i)));
+            if (f.exists()) {
+                // Parse the document
+                DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+                DocumentBuilder p = dbFactory.newDocumentBuilder();
+                Document doc = p.parse("data/profiles/" + profileName + ".xml");
+
+                this.nom = doc.getElementsByTagName("name").item(0).getTextContent();
+                this.dateNaissance = this.xmlDateToProfileDate(doc.getElementsByTagName("birthday").item(0).getTextContent());
+                this.avatar = doc.getElementsByTagName("avatar").item(0).getTextContent();
+
+                NodeList lesGames = doc.getElementsByTagName("game");
+                for (int i = 0; i < lesGames.getLength(); i++) {
+                    this.ajouterPartie(new Partie((Element) lesGames.item(i)));
+                }    
+            } else {
+                this.nom = profileName;
+                do {
+                    this.dateNaissance = LectureClavier.lireChaine("Entrez votre date de naissance : \n");
+                } while (!this.dateNaissance.matches("(^(((0[1-9]|1[0-9]|2[0-8])[\\/](0[1-9]|1[012]))|((29|30|31)[\\/](0[13578]|1[02]))|((29|30)[\\/](0[4,6,9]|11)))[\\/](19|[2-9][0-9])\\d\\d$)|(^29[\\/]02[\\/](19|[2-9][0-9])(00|04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96)$)"));
+                this.avatar = "image/tux.jpg";
             }
+           
             
         } catch(Exception e) {
-            System.out.println(e.toString());
+            System.out.println("Error in Profile constructor : " + e.toString());
         }
     }
     
@@ -73,7 +84,7 @@ public class Profile {
     }
     
     public int getLastLevel() {
-        int lastLevel = 0;
+        int lastLevel = 1;
         // If there is one game with this profile, we get the level of the last played game
         if (this.parties.size() > 0) {
             lastLevel = this.parties.get(this.parties.size() - 1).getNiveau();
@@ -173,6 +184,10 @@ public class Profile {
         Source src                      = new DOMSource(profile);
         Result dest                     = new StreamResult(f);
         transformer.transform(src, dest);
+    }
+    
+    public String getName() {
+        return this.nom;
     }
     
 }

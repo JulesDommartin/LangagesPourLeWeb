@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<profile>
+<name>jules</name>
+<avatar>image/tux.jpg</avatar>
+<birthday>1995-09-20</birthday>
+<games>
+<game date="2016-11-27">
+<time>8</time>
+<word level="1">amis</word>
+</game>
+<game date="2016-11-27">
+<time>12</time>
+<word level="1">fils</word>
+</game>
+<game date="2016-11-27" found="42%">
+<word level="3">patient</word>
+</game>
+<game date="2016-11-27">
+<time>3</time>
+<word level="3">lasagne</word>
+</game>
+<game date="2016-11-27">
+<time>1</time>
+<word level="5">outillage</word>
+</game>
+</games>
+</profile>

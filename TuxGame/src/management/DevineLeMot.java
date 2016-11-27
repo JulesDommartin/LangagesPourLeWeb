@@ -55,12 +55,12 @@ public class DevineLeMot {
         initMenu();
     }
     
-    public DevineLeMot(Env env, Room room, Dico dico, String filename) throws IOException, ParserConfigurationException {
+    public DevineLeMot(Env env, Room room, Dico dico, String profileName) throws IOException, ParserConfigurationException {
         this.room = room;
         this.env = env;
         this.dico = dico;
         this.menu = new MenuPrincipal();
-        this.profile = new Profile(filename);
+        this.profile = new Profile(profileName);
         this.level = this.profile.getLastLevel();
         this.loadEnv();
         this.mot = this.dico.getWordFromListLevel(this.level).toLowerCase();
@@ -289,6 +289,9 @@ public class DevineLeMot {
             this.env.setDisplayStr("VOUS AVEZ QUITTE", 190, 280, 2, 50, 200, 120, 1);
         } else if (!this.temps.remainsTime()) {
             this.env.setDisplayStr("TEMPS ECOULE", 190, 280, 2, 50, 200, 120, 1);
+            this.tux.setTexture("models/tux/tux_sad.png");
+            this.tux.setRotateX(0);
+            this.tux.setRotateY(this.tux.getRotateY() + 180);
             this.env.soundPlay("sounds/loose.ogg");
         } else {
             this.env.setDisplayStr("VOUS AVEZ GAGNÉ", 190, 280, 2, 50, 200, 120, 1);
@@ -310,11 +313,11 @@ public class DevineLeMot {
             p.setTemps(this.temps.remainingTime());
             p.setTrouve(this.nbLettresRestantes);
             this.profile.ajouterPartie(p);
-            try {
-                this.profile.save("profile2.xml");
+            try {   
+                this.profile.save(this.profile.getName() + ".xml");
             } catch (TransformerException ex) {
                 Logger.getLogger(DevineLeMot.class.getName()).log(Level.SEVERE, null, ex);
-            }   
+            }
         }
         this.rejouer();
         
