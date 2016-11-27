@@ -26,6 +26,7 @@ public class TestJeu {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        // We prefered to use the DOM version, but you can find the completed SAX version in DicoHandler.java
         Dico dico = new Dico("data/dico/dico.xml");
         
         String nomProfile = LectureClavier.lireChaine("Entrez votre nom ici : \n");
