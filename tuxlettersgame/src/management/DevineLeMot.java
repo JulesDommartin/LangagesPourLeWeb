@@ -1,11 +1,10 @@
-/*
+﻿/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package management;
 
-import com.jme3.audio.Filter;
 import env3d.Env;
 import game.Partie;
 import game.Profile;
@@ -22,10 +21,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import org.lwjgl.input.Keyboard;
 
-/**
- *
- * @author jimenezp
- */
 public class DevineLeMot {
     
     private boolean             exit        = false;
@@ -224,12 +219,9 @@ public class DevineLeMot {
         this.env.soundLoop("sounds/main.ogg");
         // Insert Tux
         this.env.addObject(this.tux);
-        
-        // Display game infos
         this.env.setDisplayStr("Change camera : X", 20, 20);
         this.env.setDisplayStr("Restart or quit : ESC", 20, 45);
-
-        // Add the letters 
+        // Add the letters
         for (Letter l : this.lesLettres) {
             this.env.addObject(l);
         }

@@ -9,10 +9,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 
-/**
- *
- * @author dommartj
- */
 public class Partie {
     
     private String  date;

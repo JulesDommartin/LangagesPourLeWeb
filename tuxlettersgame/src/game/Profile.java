@@ -1,4 +1,4 @@
-/*
+﻿/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -25,13 +25,7 @@ import management.LectureClavier;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-import org.w3c.dom.ls.DOMImplementationLS;
-import org.w3c.dom.ls.LSSerializer;
 
-/**
- *
- * @author dommartj
- */
 public class Profile {
     
     private String              nom;
@@ -68,7 +62,7 @@ public class Profile {
             } else {
                 this.nom = profileName;
                 do {
-                    this.dateNaissance = LectureClavier.lireChaine("Entrez votre date de naissance : \n");
+                    this.dateNaissance = LectureClavier.lireChaine("Entrez votre date de naissance : (format = dd/MM/yyyy)\n");
                 } while (!this.dateNaissance.matches("(^(((0[1-9]|1[0-9]|2[0-8])[\\/](0[1-9]|1[012]))|((29|30|31)[\\/](0[13578]|1[02]))|((29|30)[\\/](0[4,6,9]|11)))[\\/](19|[2-9][0-9])\\d\\d$)|(^29[\\/]02[\\/](19|[2-9][0-9])(00|04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96)$)"));
                 this.avatar = "image/tux.jpg";
             }
