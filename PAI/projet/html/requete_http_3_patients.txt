@@ -1,0 +1,1 @@
+https://maps.googleapis.com/maps/api/distancematrix/xml?origins=46+Avenue+Félix+Viallet+38031+Grenoble|Rue+Casimir+Brenier+38000+Grenoble|Rond-Point+de+la+Croix+de+Vie+38700+La+Tronche&destinations=Rond-Point+de+la+Croix+de+Vie+38700+La+Tronche|46+Avenue+Félix+Viallet+38031+Grenoble|Rue+Casimir+Brenier+38000+Grenoble

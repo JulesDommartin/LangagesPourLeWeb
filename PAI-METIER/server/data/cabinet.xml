@@ -10,7 +10,7 @@ and open the template in the editor.
     xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
     xmlns='http://www.ujf-grenoble.fr/l3miage/medical'
     xsi:schemaLocation='http://www.ujf-grenoble.fr/l3miage/medical ../xsd/cabinet.xsd'>
-    <nom>Soins à Grenoble</nom>
+    <nom>Soins a Grenoble</nom>
     <adresse>
         <numéro>60</numéro>
         <rue>rue de la Chimie</rue>
@@ -47,7 +47,7 @@ and open the template in the editor.
             <numéro>198082205545852</numéro>
             <adresse>
                 <étage>6</étage>
-                <numéro>50</numéro>
+                <numéro>46</numéro>
                 <rue>avenue Félix Viallet</rue>
                 <ville>Grenoble</ville>
                 <codePostal>38031</codePostal>

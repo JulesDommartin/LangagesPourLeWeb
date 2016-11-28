@@ -55,6 +55,87 @@ char * FromXMLToGoogleMapHTTPRequest::getGoogleHttpRequest(const char * dataBase
     
 }
 
+void FromXMLToGoogleMapHTTPRequest::on_start_element(const Glib::ustring& name, const AttributeList& attributes) {
+    std::cout << "  - Debut element" << std::endl;
+    std::cout << "      - le nom : " << name.c_str() << std::endl;   
+
+    if (strcmp(name.c_str(), "adresse") == 0) {
+        this->currentAddress = new Address();
+        this->currentState = ADRESSE;
+    } else if (strcmp(name.c_str(), "numéro") == 0 && this->currentState == ADRESSE) {
+        this->currentState = NUMERO;
+    } else if (strcmp(name.c_str(), "rue") == 0) {
+        this->currentState = RUE;
+    } else if (strcmp(name.c_str(), "ville") == 0) {
+        this->currentState = VILLE;
+    } else if (strcmp(name.c_str(), "codePostal") == 0) {
+        this->currentState = CODEPOSTAL;
+    } else if (strcmp(name.c_str(), "visite") == 0) {
+        this->currentState = VISITE;
+    } else if (strcmp(name.c_str(), "cabinet") == 0) {
+        this->isCabinet = true;
+    } else if (strcmp(name.c_str(), "infirmiers") == 0) {
+        this->addressList += this->currentAddress->getGoogleAdresse() + "|";
+        this->currentAddress = NULL;
+        this->isCabinet = false;
+    } else {
+        std::cout << "Non traité" << std::endl;
+    }
+
+    const char * id = "";
+
+    if (this->currentState == VISITE) {
+        for(xmlpp::SaxParser::AttributeList::const_iterator iter = attributes.begin(); iter != attributes.end(); ++iter)
+        {
+          std::cout << "      - un attribut : (" << iter->name.c_str() << " = " << iter->value.c_str() << ")" << std::endl;
+          if (strcmp(iter->name.c_str(), "intervenant") == 0) {
+            id = iter->value.c_str();
+          }
+        }
+
+        if (strcmp(id, this->nurseId.c_str()) == 0) {
+            this->addressList += this->currentAddress->getGoogleAdresse() + "|";
+            this->currentAddress = NULL;
+        }
+    }
+}
+
+void FromXMLToGoogleMapHTTPRequest::on_end_element(const Glib::ustring& name) {
+    std::cout << "  -Fin element : " << name.c_str() << std::endl;
+    this->currentState = OTHER;
+    if (strcmp(name.c_str(), "patient") == 0 && this->currentAddress != NULL) {
+        std::cout << this->currentAddress->getGoogleAdresse()<< std::endl;
+    }
+}
+
+void FromXMLToGoogleMapHTTPRequest::on_characters(const Glib::ustring& text) {
+    std::cout << "          -    Le texte : " << text.c_str() << std::endl;
+    switch (this->currentState) {
+        case NUMERO :
+            this->currentAddress->setNumero(text.c_str());
+            break;
+        case RUE :
+            this->currentAddress->setRue(text.c_str()); 
+            break;
+        case VILLE :
+            this->currentAddress->setVille(text.c_str());
+            break;
+        case CODEPOSTAL :
+            this->currentAddress->setCodePostal(text.c_str());
+            break;
+        default :
+            break;
+    }
+}
+
+void FromXMLToGoogleMapHTTPRequest::on_start_document() {
+    this->currentState = START;
+}
+
+void FromXMLToGoogleMapHTTPRequest::on_end_document() {
+    this->request = "https://maps.googleapis.com/maps/api/distancematrix/xml?origins=" + this->addressList + "&destinations=" + this->addressList;
+}
+
 
 /*
  * Méthode d'aide qui permet de trouver un attribut qui a un certain nom dans une liste d'attribut.

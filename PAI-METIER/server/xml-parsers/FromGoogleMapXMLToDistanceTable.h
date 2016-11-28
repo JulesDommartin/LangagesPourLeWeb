@@ -23,6 +23,16 @@ class FromGoogleMapXMLToDistanceTable : public LwSaxParser {
    *  et chacune des adresses numéro j (à la colonne j).
    */
   std::vector< std::vector<int> > * getDistances();
+  
+  void on_start_element(const Glib::ustring& name, const AttributeList& attributes);
+
+  void on_end_element(const Glib::ustring& name);
+
+  void on_characters(const Glib::ustring& text);
+
+  void on_start_document();
+
+  void on_end_document();
     
  protected:
   /** 

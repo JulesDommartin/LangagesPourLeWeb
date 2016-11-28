@@ -164,7 +164,7 @@ public class DevineLeMot {
     //          equals to 0, but then the hitbox would be a circle
     //      - Checking if [tux.x - scale, tux.x + scale] was in [letter.x - scale, letter.x + scale]
     //          and also if [tux.z - scale, tux.z + scale] was in [letter.z - scale, letter.z + scale]
-    //          in order to get more precision for the hitboxes
+    //          in order to get more precision for the hitboxes but we know that it would use more resources
     // We chose the second one so we don't need this method
     private double distance(Tux tux, Letter letter) {
         return Math.sqrt((tux.getX() - letter.getX()*(tux.getX() - letter.getX())) + Math.pow(tux.getZ(), letter.getZ()));

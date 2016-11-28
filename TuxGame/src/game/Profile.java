@@ -58,7 +58,8 @@ public class Profile {
             System.out.println("Taille parties : " + this.parties.size());
             
         } catch(Exception e) {
-            System.out.println("Erreur : " + e);
+            System.out.println("Erreur : ");
+            System.out.println(e);
         }
     }
     

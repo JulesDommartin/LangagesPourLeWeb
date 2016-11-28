@@ -55,7 +55,8 @@ void LwSaxParser::on_start_element(const Glib::ustring& name, const AttributeLis
 
   std::cout << "    avec les arguments suivants: " << std::endl;
   std::cout << "      - name: " << name.c_str() << std::endl;
-  for(xmlpp::SaxParser::AttributeList::const_iterator iter = attributes.begin(); iter != attributes.end(); ++iter)
+  std::cout << attributes.size() << std::endl;
+  for(xmlpp::SaxParser::AttributeList::const_iterator iter = attributes.begin(); iter != attributes.end(); iter++)
   {
     std::cout << "      - attribute: (" << iter->name.c_str() << " = " << iter->value.c_str() << ")" << std::endl;
   }

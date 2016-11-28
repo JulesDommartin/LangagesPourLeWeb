@@ -35,7 +35,7 @@ public class Partie {
         this.mot    = domPartie.getElementsByTagName("word").item(0).getTextContent();
         this.niveau = Integer.parseInt(domPartie.getElementsByTagName("word").item(0).getAttributes().item(0).getTextContent());
         if (domPartie.getElementsByTagName("time").getLength() == 0) {
-            this.trouve = Integer.parseInt(domPartie.getAttribute("found"));
+            this.trouve = Integer.parseInt(domPartie.getAttribute("found").replace("%", ""));
             this.temps = 0;
         } else {
             this.temps  = Integer.parseInt(domPartie.getElementsByTagName("time").item(1).getTextContent());
