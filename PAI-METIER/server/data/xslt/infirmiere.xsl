@@ -71,7 +71,7 @@
             </div>
             <div class="options-patient">
                 <button>
-                    <xsl:attribute name="onclick">openFacture("<xsl:value-of select="cab:prénom"/>", "<xsl:value-of select="cab:nom"/>", "<xsl:value-of select="cab:acte"/>");</xsl:attribute>
+                    <xsl:attribute name="onclick">openFacture("<xsl:value-of select="cab:prénom"/>", "<xsl:value-of select="cab:nom"/>", "<xsl:value-of select="cab:visite[@intervenant=$destinedId]/cab:acte/@id"/>");</xsl:attribute>
                     Facture
                 </button>
             </div>

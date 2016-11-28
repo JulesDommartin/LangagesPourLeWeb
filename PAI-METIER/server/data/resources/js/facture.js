@@ -6,7 +6,6 @@ var totalFacture = 0.0;
 
 function afficherFacture(prenom, nom, actes)
 {
-    console.log("Ouesh");
     totalFacture = 0.0;
     var text = "<html>\n";
     text +=
@@ -62,8 +61,6 @@ function afficherFacture(prenom, nom, actes)
     text += "<tr>";
     text += "<td> Type </td> <td> Clé </td> <td> Intitulé </td> <td> Coef </td> <td> Tarif </td>";
     text += "</tr>";
-
-    console.log(actes);
 
     var acteIds = actes.split(" ");
     for (var j = 0; j < acteIds.length; j++) {
@@ -128,9 +125,8 @@ function acteTable(acteId)
 {
     var str = "";
 
-    var xmlDoc = loadXMLDoc("../resources/actes2.xml");
-    var actes;
-    actes = xmlDoc.getElementsByTagName("actes");
+    var xmlDoc = loadXMLDoc("../resources/actes.xml");
+    var actes = xmlDoc.getElementsByTagName("acte");
 
     // Clé de l'acte (3 lettres)
     var cle;
@@ -157,27 +153,41 @@ function acteTable(acteId)
     // Trouver l'acte qui correspond
     var i = 0;
     var found = false;
-
     while ((i < actes.length) && (!found)) {
-        if (actes.getElementsByID("acte")[i].getAttributes("id")=acteId){
+        if (actes[i].getAttribute("id") == acteId){
             found = true;
         }
         i++;
     }
 
     if (found) {
-        cle         =  actes.getElementsByTagName("acte")[i].getAttributes("clé");
-        coef        =  actes.getElementsByTagName("acte")[i].getAttributes("coef");
-        type        =  actes.getElementsByTagName("acte")[i].getAttributes("type");
-        intitule    =  "";
-        tarif = 0;
+        cle         =  actes[i].getAttribute("clé");
+        coef        =  actes[i].getAttribute("coef");
+        type        =  actes[i].getAttribute("type");
+        intitule    =  actes[i].text;
+        coeff_cle = 1;
+        console.log(cle);
+        switch (cle) {
+          case "AMI":
+            coeff_cle = AMIVAL;
+            break;
+          case "AIS":
+            coeff_cle = AISVAL;
+            break;
+          case "DI":
+            coeff_cle = DIVAL;
+            break;
+          default:
+            break;
+        }
+        tarif = coeff_cle * coef;
     }
 
-    str += "<td>" + "type" + "</td>";
-    str += "<td>" + "cle" + "</td>";
-    str += "<td>" + "intitule" + "</td>";
-    str += "<td>" + "coef" + "</td>";
-    str += "<td>" + "tarif" + "</td>";
+    str += "<td>" + type + "</td>";
+    str += "<td>" + cle + "</td>";
+    str += "<td>" + intitule + "</td>";
+    str += "<td>" + coef + "</td>";
+    str += "<td>" + tarif + "</td>";
     totalFacture += tarif;
 
     return str;
