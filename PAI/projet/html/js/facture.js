@@ -114,8 +114,6 @@ function adresseToText(adresse)
     }
 
     str += rue + ", " + ville + " " + codePostal;
-    // Mise en forme de l'adresse du patient
-    // A complÃ©ter
 
     if (etage) {
         str += ", étage " + etage + ".";
@@ -131,22 +129,26 @@ function acteTable(acteId)
 
     var xmlDoc = loadXMLDoc("data/actes.xml");
     var actes;
-    // actes = rÃ©cupÃ©rer les actes de xmlDoc
+    actes = xmlDoc.getElementsByTagName("actes");
 
-    // ClÃ© de l'acte (3 lettres)
+    // Clé de l'acte (3 lettres)
     var cle;
+
     // Coef de l'acte (nombre)
     var coef;
-    // Type id pour pouvoir rÃ©cupÃ©rer la chaÃ®ne de caractÃ¨res du type 
-    //  dans les sous-Ã©lÃ©ments de types
+
+    // Type id pour pouvoir récupérer la chaîne de caractères du type 
+    //  dans les sous-éléments de types
     var typeId;
-    // ChaÃ®ne de caractÃ¨re du type
+
+    // Chaîne de caractÃ¨re du type
     var type = "";
-    // ...
-    // IntitulÃ© de l'acte
+
+
+    // Intitulé de l'acte
     var intitule;
 
-    // Tarif = (lettre-clÃ©)xcoefficient (utiliser les constantes 
+    // Tarif = (lettre-clé)xcoefficient (utiliser les constantes 
     // var AMIVAL = 3.15; var AISVAL = 2.65; et var DIVAL = 10.0;)
     // (cf  http://www.infirmiers.com/votre-carriere/ide-liberale/la-cotation-des-actes-ou-comment-utiliser-la-nomenclature.html)      
     var tarif = 0.0;
@@ -155,28 +157,26 @@ function acteTable(acteId)
     var i = 0;
     var found = false;
     
-// A dÃ©-commenter dÃ¨s que actes aura le bon type...
-//    while ((i < actes.length) && (!found)) {
-        // A complÃ©ter (cf mÃ©thode plus haut)
-//        i++;
-//    }
-
-    if (found) {
-        // A complÃ©ter
-//        cle = ;
-//        coef = ;
-//        typeId = ;
-//        type = ;
-//        intitule = ;
-//        tarif = ;
+    while ((i < actes.length) && (!found)) {
+        if (actes.getElementsByID("acte")[i].getAttributes("id")=acteId){
+            found = true;
+        }
+        i++;
     }
 
-    // A modifier
-    str += "<td>" + "???" + "</td>";
-    str += "<td>" + "???" + "</td>";
-    str += "<td>" + "???" + "</td>";
-    str += "<td>" + "???" + "</td>";
-    str += "<td>" + "???" + "</td>";
+    if (found) {
+        cle         =  actes.getElementsByTagName("acte")[i].getAttributes("clé");
+        coef        =  actes.getElementsByTagName("acte")[i].getAttributes("coef");
+        type        =  actes.getElementsByTagName("acte")[i].getAttributes("type");
+        intitule    =  "";
+        tarif = 0;
+    }
+
+    str += "<td>" + "type" + "</td>";
+    str += "<td>" + "cle" + "</td>";
+    str += "<td>" + "intitule" + "</td>";
+    str += "<td>" + "coef" + "</td>";
+    str += "<td>" + "tarif" + "</td>";
     totalFacture += tarif;
 
     return str;
