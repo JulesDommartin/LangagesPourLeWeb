@@ -1,6 +1,6 @@
 function openFacture(prenom, nom, actes) {
-   var width  = 500;
-   var height = 300;
+   var width  = 600;
+   var height = 400;
    var left, top;
    if(window.innerWidth) {
        left = (window.innerWidth-width)/2;
