@@ -1,12 +1,17 @@
 @font-face {
-    font-family: MayekaThinDemo;
-    src: url(../data/fonts/mayeka/MayekaThinDemo.otf);
+    font-family: MayekaRegularDemo;
+    src: url(../data/fonts/mayeka/MayekaRegularDemo.otf);
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url(../data/fonts/roboto/Roboto-Medium.ttf);
 }
 
 body {
     margin: auto;
     width: 70%;
-    font-family: MayekaThinDemo, "sans-serif";
+    font-family: Roboto, "sans-serif";
     background-color: #E8FFFF;
 }
 
@@ -190,3 +195,14 @@ h4 {
   -o-transition: width 2s;
 }
 
+.tableau-actes {
+  border-collapse: collapse;
+}
+
+.tableau-actes td {
+  padding: 5px;
+}
+
+.facture {
+  margin-top: 30px;
+}

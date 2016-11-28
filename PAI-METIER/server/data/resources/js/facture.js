@@ -11,13 +11,13 @@ function afficherFacture(prenom, nom, actes)
     text +=
             "    <head>\n\
             <title>Facture</title>\n\
-            <link rel='stylesheet' type='text/css' href='css/secretary.css'/>\n\
+            <link rel='stylesheet' type='text/css' href='../resources/css/style.css'/>\n\
             <meta http-equiv='content-type' content='text/html; charset=utf-8'/>\n\
          </head>\n\
          <body>\n";
 
 
-    text += "Facture pour " + prenom + " " + nom + "<br/>";
+    text += "<div class='facture'><b>Facture pour : </b>" + prenom + " " + nom + "<br/><br/>";
 
 
     // Trouver l'adresse du patient
@@ -40,26 +40,26 @@ function afficherFacture(prenom, nom, actes)
 
 
     if (found) {
-        text += "Adresse: ";
+        text += "<b>Adresse : </b>";
         // On rÃ©cupÃ¨re l'adresse du patient
         var adresse;
         adresse = patient.getElementsByTagName("adresse")[0];
         text += adresseToText(adresse);
-        text += "<br/>";
+        text += "<br/><br/>";
 
         var nSS = "0";
         nSS = patient.getElementsByTagName("numéro")[0].childNodes[0].nodeValue;
 
-        text += "Numéro de sécurité sociale: " + nSS + "\n";
+        text += "<b>Numéro de sécurité sociale : </b>" + nSS + "\n";
     }
-    text += "<br/>";
+    text += "<br/><br/>";
 
 
 
     // Tableau rÃ©capitulatif des Actes et de leur tarif
-    text += "<table border='1'  bgcolor='#CCCCCC'>";
+    text += "<table class='tableau-actes' border='1'  bgcolor='#CCCCCC'>";
     text += "<tr>";
-    text += "<td> Type </td> <td> Clé </td> <td> Intitulé </td> <td> Coef </td> <td> Tarif </td>";
+    text += "<td><b> Type </b></td> <td><b> Clé </b></td> <td><b> Intitulé </b></td> <td><b> Coef </b></td> <td><b> Tarif (en €) </b></td>";
     text += "</tr>";
 
     var acteIds = actes.split(" ");
@@ -70,9 +70,9 @@ function afficherFacture(prenom, nom, actes)
         text += "</tr>";
     }
 
-     text += "<tr><td colspan='4'>Total</td><td>" + totalFacture + "</td></tr>\n";
+     text += "<tr><td colspan='4'><b>Total</b></td><td>" + totalFacture + "</td></tr>\n";
 
-     text +="</table>";
+     text +="</table></div>";
 
 
     text +=
@@ -164,9 +164,8 @@ function acteTable(acteId)
         cle         =  actes[i].getAttribute("clé");
         coef        =  actes[i].getAttribute("coef");
         type        =  actes[i].getAttribute("type");
-        intitule    =  actes[i].text;
+        intitule    =  actes[i].textContent;
         coeff_cle = 1;
-        console.log(cle);
         switch (cle) {
           case "AMI":
             coeff_cle = AMIVAL;
