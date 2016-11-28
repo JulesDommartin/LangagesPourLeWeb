@@ -14,7 +14,7 @@
                 >
     <xsl:output method="html"/>
 
-    <xsl:variable name="actes" select="document('../web/actes.xml', /)/act:ngap"/>
+    <xsl:variable name="actes" select="document('../resources/actes.xml', /)/act:ngap"/>
     
     <!-- TODO customize transformation rules 
          syntax recommendation http://www.w3.org/TR/xslt 
@@ -25,14 +25,15 @@
         <html>
             <head>
                 <title>Fiche infirmière : <xsl:value-of select="$infirmier/cab:nom"/></title>
-                <script type="text/javascript" src="../web/js/script.js"></script>
-                <link href="../web/css/secretary.css" rel="stylesheet" type="text/css"/>
+                <script type="text/javascript" src="../resources/js/script.js"></script>
+                <script type="text/javascript" src="../resources/js/facture.js"></script>
+                <link href="../resources/css/style.css" rel="stylesheet" type="text/css"/>
             </head>
             <body>
                 <div class="infirmier">
                     <h2>Bonjour <xsl:value-of select="$infirmier/cab:prénom"/>,</h2>
                     <img class="photo-infirmiere">
-                        <xsl:attribute name="src">../IHM/L3M-Projet/data/<xsl:value-of select="$infirmier/cab:photo"/>
+                        <xsl:attribute name="src">../resources/data/img/<xsl:value-of select="$infirmier/cab:photo"/>
                         </xsl:attribute>
                     </img>
                     <br/>
@@ -70,8 +71,7 @@
             </div>
             <div class="options-patient">
                 <button>
-                    <xsl:attribute name="onclick">openFacture("<xsl:value-of select="cab:prénom"/>", "<xsl:value-of select="cab:nom"/>", "<xsl:value-of select="cab:acte"/>") 
-                    </xsl:attribute>
+                    <xsl:attribute name="onclick">openFacture("<xsl:value-of select="cab:prénom"/>", "<xsl:value-of select="cab:nom"/>", "<xsl:value-of select="cab:acte"/>");</xsl:attribute>
                     Facture
                 </button>
             </div>
