@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<dico xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xmlns='http://xml.netbeans.org/schema/dico'
+    xsi:schemaLocation='http://xml.netbeans.org/schema/dico ../xsd/dico.xsd'>
+    <mot niveau="1">
+        <contenu>Fils</contenu>
+    </mot>
+    <mot niveau="1">
+        <contenu>Math</contenu>
+    </mot>
+    <mot niveau="1">
+        <contenu>Quoi</contenu>
+    </mot>
+    <mot niveau="1">
+        <contenu>Amis</contenu>
+    </mot>
+    <mot niveau="1">
+        <contenu>Flot</contenu>
+    </mot>
+    <mot niveau="1">
+        <contenu>Pour</contenu>
+    </mot>
+    <mot niveau="1">
+        <contenu>Papi</contenu>
+    </mot>
+    <mot niveau="1">
+        <contenu>Gens</contenu>
+    </mot>
+
+    <mot niveau="2">
+        <contenu>Flûte</contenu>
+    </mot>
+    <mot niveau="2">
+        <contenu>Idiot</contenu>
+    </mot>
+    <mot niveau="2">
+        <contenu>Poche</contenu>
+    </mot>
+    <mot niveau="2">
+        <contenu>Frère</contenu>
+    </mot>
+    <mot niveau="2">
+        <contenu>Soeur</contenu>
+    </mot>
+    <mot niveau="2">
+        <contenu>Malin</contenu>
+    </mot>
+    <mot niveau="2">
+        <contenu>Linux</contenu>
+    </mot>
+
+    <mot niveau="3">
+        <contenu>Exquis</contenu>
+    </mot>
+    <mot niveau="3">
+        <contenu>Patient</contenu>
+    </mot>
+    <mot niveau="3">
+        <contenu>Voiture</contenu>
+    </mot>
+    <mot niveau="3">
+        <contenu>Partage</contenu>
+    </mot>
+    <mot niveau="3">
+        <contenu>Adoucis</contenu>
+    </mot>
+    <mot niveau="3">
+        <contenu>Radical</contenu>
+    </mot>
+    <mot niveau="3">
+        <contenu>Lasagne</contenu>
+    </mot>
+    <mot niveau="3">
+        <contenu>Lustres</contenu>
+    </mot>
+    <mot niveau="3">
+        <contenu>Glouton</contenu>
+    </mot>
+
+    <mot niveau="4">
+        <contenu>Neutrons</contenu>
+    </mot>
+    <mot niveau="4">
+        <contenu>Nocturne</contenu>
+    </mot>
+    <mot niveau="4">
+        <contenu>Exigeant</contenu>
+    </mot>
+    <mot niveau="4">
+        <contenu>Sacoches</contenu>
+    </mot>
+    <mot niveau="4">
+        <contenu>Yoghourt</contenu>
+    </mot>
+    <mot niveau="4">
+        <contenu>Fabuleux</contenu>
+    </mot>
+    <mot niveau="4">
+        <contenu>Tangente</contenu>
+    </mot>
+    <mot niveau="4">
+        <contenu>Beignets</contenu>
+    </mot>
+    <mot niveau="4">
+        <contenu>Berceuse</contenu>
+    </mot>
+
+    <mot niveau="5">
+        <contenu>Bêtisiers</contenu>
+    </mot>
+    <mot niveau="5">
+        <contenu>Outillage</contenu>
+    </mot>
+    <mot niveau="5">
+        <contenu>Fabricant</contenu>
+    </mot>
+    <mot niveau="5">
+        <contenu>Cagnottes</contenu>
+    </mot>
+    <mot niveau="5">
+        <contenu>Parcmètre</contenu>
+    </mot>
+    <mot niveau="5">
+        <contenu>Machinale</contenu>
+    </mot>
+    <mot niveau="5">
+        <contenu>Kangourou</contenu>
+    </mot>
+    <mot niveau="5">
+        <contenu>Zigzaguer</contenu>
+    </mot>
+    <mot niveau="5">
+        <contenu>Urticants</contenu>
+    </mot>
+</dico>

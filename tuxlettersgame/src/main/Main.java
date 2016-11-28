@@ -16,28 +16,24 @@ import management.Dico;
 import management.LectureClavier;
 import management.MenuPrincipal;
 
-/**
- *
- * @author Jules
- */
-public class TestJeu {
-    
+public class Main {
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // We prefered to use the DOM version, but you can find the completed SAX version in DicoHandler.java
         Dico dico = new Dico("data/dico/dico.xml");
-        
+
         String nomProfile = LectureClavier.lireChaine("Entrez votre nom ici : \n");
-        
+
         try {
             DevineLeMot devineLeMot = new DevineLeMot(new Env(), new Room(), dico, nomProfile);
         } catch (IOException ex) {
-            Logger.getLogger(TestJeu.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParserConfigurationException ex) {
-            Logger.getLogger(TestJeu.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
 }
