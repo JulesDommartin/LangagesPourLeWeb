@@ -40,6 +40,7 @@ public class TestJeu {
         dico.addWordToDico(5, "Florilege");
         dico.addWordToDico(5, "Mecenat");
         
+        //DevineLeMot devineLeMot = new DevineLeMot(new Env(), new Room(), dico, "data/profiles/profile2.xml");
         DevineLeMot devineLeMot = new DevineLeMot(new Env(), new Room(), dico);
     }
     

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<films   xmlns='http://ujf-grenoble.fr/films'
+         xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+         xsi:schemaLocation='http://ujf-grenoble.fr/films listeFilms.xsd'>
+  <film lang="en">
+    <photo href="rocky.jpg"/>
+    <titre>Rocky</titre>
+    <année>1976</année>
+    <réalisateur>John G. Avildsen</réalisateur>
+    <casting>
+      <acteur id="rocky" personnage="Rocky Balboa">Sylvester Stallone</acteur>
+      <acteur id="adrian" personnage="Adrian">Talia Shire</acteur>
+      <acteur id="paulie" personnage="Paulie">Burt Young</acteur>
+      <acteur id="creed" personnage="Apollo Creed">Carl Weathers</acteur>
+      <acteur id="mickey" personnage="Mickey">Burgess Meredith</acteur>
+    </casting>
+    <synopsis> 
+      <perso ref="rocky"/> is a small-time boxer who lives in an
+      apartment in Philadelphia, Pennsylvania, and his career has so
+      far not gotten off the canvas. <perso ref="rocky"/> earns a
+      living by collecting debts for a loan shark named Gazzo, but
+      Gazzo doesn't think <perso ref="rocky"/> has the viciousness it
+      takes to beat up deadbeats. <perso ref="rocky"/> still boxes
+      every once in a while to keep his boxing skills sharp, and his
+      ex-trainer, <perso ref="mickey"/>, believes he could've made it
+      to the top if he was willing to work for it. <perso
+      ref="rocky"/>, goes to a pet store that sells pet supplies, and
+      this is where he meets a young woman named <perso
+      ref="adrian"/>, who is extremely shy, with no ability to talk to
+      men. <perso ref="rocky"/> befriends her. Adrain later surprised
+      <perso ref="rocky"/> with a dog from the pet shop that <perso
+      ref="rocky"/> had befriended.  <perso ref="adrian"/>'s brother
+      Paulie, who works for a meat packing company, is thrilled that
+      someone has become interested in <perso ref="adrian"/>, and
+      <perso ref="adrian"/> spends Thanksgiving with <perso
+      ref="rocky"/>. Later, they go to <perso ref="rocky"/>'s
+      apartment, where <perso ref="adrian"/> explains that she has
+      never been in a man's apartment before.  <perso ref="rocky"/>
+      sets her mind at ease, and they become lovers.  Current world
+      heavyweight boxing champion <perso ref="creed"/> comes up with
+      the idea of giving an unknown a shot at the title.  <perso
+      ref="creed"/> checks out the Philadelphia boxing scene, and
+      chooses <perso ref="rocky"/>. Fight promoter Jergens gets things
+      in gear, and <perso ref="rocky"/> starts training with <perso
+      ref="mickey"/>. After a lot of training, <perso ref="rocky"/> is
+      ready for the match, and he wants to prove that he can go the
+      distance with <perso ref="creed"/>.
+    </synopsis> 
+  </film>
+  <film lang="fr">
+    <titre>La Guerre des étoiles</titre>
+    <année>1977</année>
+    <réalisateur>George Lucas</réalisateur>
+    <casting>
+      <acteur id="lukemonfils" personnage="Luke Skywalker">Mark Hamill</acteur>
+      <acteur personnage="Han Solo">Harrison Ford</acteur>
+      <acteur id="leia" personnage="La princesse Leia">Carrie Fisher</acteur>
+    </casting>
+    <synopsis>
+      Il y a bien longtemps, dans une galaxie très lointaine... La
+      guerre civile fait rage entre l'Empire galactique et l'Alliance
+      rebelle.  Capturée par les troupes de choc de l'Empereur menées
+      par le sombre et impitoyable Dark Vador, la princesse <perso
+      ref="leia"/> dissimule les plans de l'Etoile Noire, une station
+      spatiale invulnérable, à son droïde R2-D2 avec pour mission de
+      les remettre au Jedi Obi-Wan Kenobi. Accompagné de son fidèle
+      compagnon, le droïde de protocole C-3PO, R2-D2 s'échoue sur la
+      planète Tatooine et termine sa quête chez le jeune <perso
+      ref="lukemonfils"/>.  Rêvant de devenir pilote mais confiné aux
+      travaux de la ferme, ce dernier se lance à la recherche de ce
+      mystérieux Obi-Wan Kenobi, devenu ermite au coeur des montagnes
+      désertiques de Tatooine...
+    </synopsis>
+  </film>
+  <film lang="en">
+    <titre>Raiders of the Lost Ark</titre>
+    <année>1981</année>
+    <réalisateur>Steven Spielberg</réalisateur>
+    <casting>
+      <acteur id="indy" personnage="Indiana Jones">Harrison Ford</acteur>
+    </casting>
+    <synopsis>
+      Renowned archeologist and expert in the occult, <perso
+      ref="indy"/>, is hired by the U.S.  Government to find the Ark
+      of the Covenant, which is believed to still hold the ten
+      commandments. Unfortunately, agents of Hitler are also after the
+      Ark. <perso ref="indy"/>, and his ex-flame Marion, escape from
+      various close scrapes in a quest that takes them from Nepal to
+      Cairo.
+    </synopsis>
+  </film>
+  <film lang="fr">
+    <titre>Wallace et Gromit le mystère du lapin-garou</titre>
+    <année>2003</année>
+    <réalisateur>Nick Park, Steve Box</réalisateur>
+    <casting/>
+    <synopsis>
+      Une "fièvre végétarienne" intense règne dans la petite ville de
+      Wallace et Gromit, et l'ingénieux duo a mis à profit cet
+      engouement en inventant un produit anti-nuisibles humain et
+      écolo, qui épargne la vie des lapins. L'astuce consiste
+      simplement à capturer, à la main, un maximum de ces rongeurs et
+      à les mettre en cage.  A quelques jours du Grand Concours Annuel
+      de Légumes, les affaires de Wallace et Gromit n'ont jamais été
+      aussi florissantes, et tout irait pour le mieux dans le meilleur
+      des mondes, si un lapin-garou géant ne venait soudain s'attaquer
+      aux sacro-saints potagers de la ville.  Pour faire face à ce
+      péril inédit, l'organisatrice du concours, Lady Tottington, se
+      tourne vers nos deux "spécialistes" et leur demande
+      d'appréhender le monstre.
+    </synopsis>
+  </film>
+</films>
