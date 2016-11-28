@@ -10,7 +10,7 @@ FromGoogleMapXMLToDistanceTable::FromGoogleMapXMLToDistanceTable() : LwSaxParser
   adresses = new std::vector<std::string>();
   numeroLigne = -1;
   ligne = new std::vector<int>();
-  distanceMatrix = new std::vector< std::vector<int> >();
+  distanceMatrix = NULL;
 }
 
 
@@ -40,11 +40,17 @@ void FromGoogleMapXMLToDistanceTable::on_end_element(const Glib::ustring& name) 
   this->state = UNKNOWN;
   if (strcmp(name.c_str(), "row") == 0) {
     std::cout << "On ajoute une row" << std::endl;
-    this->distanceMatrix->push_back(*(this->ligne));
+    if (this->distanceMatrix == NULL) {
+      std::cout << "La matrice est nulle" << std::endl;
+    } else {
+      std::cout << "On ajoute la matrice" << std::endl;
+      this->distanceMatrix->push_back(*(this->ligne));
+    }
     this->ligne = new std::vector<int>();
   } else if (strcmp(name.c_str(), "origin_address") == 0) {
     std::cout << "On ajoute une adresse" << std::endl;
     this->adresses->push_back(this->adresseCourante);
+    this->adresseCourante = "";
   }
 }
 
@@ -69,6 +75,7 @@ void FromGoogleMapXMLToDistanceTable::on_characters(const Glib::ustring& text) {
 void FromGoogleMapXMLToDistanceTable::on_start_document() {
   this->state = START;
   this->ligne = 0;
+  this->distanceMatrix = new std::vector< std::vector<int> >();
 }
 
 void FromGoogleMapXMLToDistanceTable::on_end_document() {
