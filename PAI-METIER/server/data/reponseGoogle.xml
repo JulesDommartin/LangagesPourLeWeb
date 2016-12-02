@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DistanceMatrixResponse>
+ <status>OK</status>
+ <origin_address>60 Rue de la Chimie, 38400 Saint-Martin-d'Hères, France</origin_address>
+ <origin_address>Avenue Félix Viallet, 38031 Grenoble, France</origin_address>
+ <origin_address>Rond-Point de la Croix de Vie, 38700 La Tronche, France</origin_address>
+ <destination_address>60 Rue de la Chimie, 38400 Saint-Martin-d'Hères, France</destination_address>
+ <destination_address>Avenue Félix Viallet, 38031 Grenoble, France</destination_address>
+ <destination_address>Rond-Point de la Croix de Vie, 38700 La Tronche, France</destination_address>
+ <row>
+  <element>
+   <status>OK</status>
+   <duration>
+    <value>0</value>
+    <text>1 minute</text>
+   </duration>
+   <distance>
+    <value>0</value>
+    <text>1 m</text>
+   </distance>
+  </element>
+  <element>
+   <status>OK</status>
+   <duration>
+    <value>1093</value>
+    <text>18 minutes</text>
+   </duration>
+   <distance>
+    <value>10244</value>
+    <text>10,2 km</text>
+   </distance>
+  </element>
+  <element>
+   <status>OK</status>
+   <duration>
+    <value>626</value>
+    <text>10 minutes</text>
+   </duration>
+   <distance>
+    <value>7478</value>
+    <text>7,5 km</text>
+   </distance>
+  </element>
+ </row>
+ <row>
+  <element>
+   <status>OK</status>
+   <duration>
+    <value>1010</value>
+    <text>17 minutes</text>
+   </duration>
+   <distance>
+    <value>5377</value>
+    <text>5,4 km</text>
+   </distance>
+  </element>
+  <element>
+   <status>OK</status>
+   <duration>
+    <value>0</value>
+    <text>1 minute</text>
+   </duration>
+   <distance>
+    <value>0</value>
+    <text>1 m</text>
+   </distance>
+  </element>
+  <element>
+   <status>OK</status>
+   <duration>
+    <value>588</value>
+    <text>10 minutes</text>
+   </duration>
+   <distance>
+    <value>3215</value>
+    <text>3,2 km</text>
+   </distance>
+  </element>
+ </row>
+ <row>
+  <element>
+   <status>OK</status>
+   <duration>
+    <value>584</value>
+    <text>10 minutes</text>
+   </duration>
+   <distance>
+    <value>6825</value>
+    <text>6,8 km</text>
+   </distance>
+  </element>
+  <element>
+   <status>OK</status>
+   <duration>
+    <value>683</value>
+    <text>11 minutes</text>
+   </duration>
+   <distance>
+    <value>3440</value>
+    <text>3,4 km</text>
+   </distance>
+  </element>
+  <element>
+   <status>OK</status>
+   <duration>
+    <value>0</value>
+    <text>1 minute</text>
+   </duration>
+   <distance>
+    <value>0</value>
+    <text>1 m</text>
+   </distance>
+  </element>
+ </row>
+</DistanceMatrixResponse>

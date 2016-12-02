@@ -24,6 +24,16 @@ public:
      */
     char * getGoogleHttpRequest(const char * dataBaseFileName, int nurseNumber);
     
+    void on_start_element(const Glib::ustring& name, const AttributeList& attributes);
+
+    void on_end_element(const Glib::ustring& name);
+
+    void on_characters(const Glib::ustring& text);
+
+    void on_start_document();
+
+    void on_end_document();
+
 protected:
     
     /// Est-on en train de lire l'adresse du cabinet plutôt que celle d'un patient ?

@@ -1,5 +1,8 @@
 #include "Address.h"
 
+#include <algorithm>
+#include <string>
+
 // Implémentation du constructeur
 // Rappel, en C++, comme ne Java, le role du constructeur est d'initialiser les attributs.
 Address::Address() {
@@ -30,6 +33,8 @@ std::string Address::getGoogleAdresse() {
     if (hasNumero) {
         resultat += "+" + numero;
     }
+    std::replace(this->ville.begin(), this->ville.end(), ' ', '+');
+    std::replace(this->rue.begin(), this->rue.end(), ' ', '+');
     resultat += "+" + rue;
     
     return resultat;
